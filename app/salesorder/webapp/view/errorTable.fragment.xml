@@ -16,26 +16,6 @@
   </VBox>
   </HBox>
   <Table id="table2">
-  <!-- <columns>
-  <Column ><Text text="PRODUCT"></Text></Column>
-  <Column ><Text text="ID"></Text></Column>
-  <Column ><Text text="QUANTITY"></Text></Column>
-  <Column ><Text text="DATE"></Text></Column>
-  <Column ><Text text="TYPE"></Text></Column>
-  <Column ><Text text="REASON"></Text></Column>
-  </columns>
-  <items>
-  <ColumnListItem >
-  <cells>
-  <Text text="{PRODUCT}"></Text>
-  <Text text="{UNIQUE_ID}"></Text>
-  <Text text="{ORDER_QUANTITY}"></Text>
-  <Text text="{MATERIAL_AVAIL_DATE}"></Text>
-  <Text text="{TYPE}"></Text>
-  <Text text="{REASON}"></Text>
-  </cells>
-  </ColumnListItem>
-  </items> -->
   </Table>
   </content>
   <endButton>

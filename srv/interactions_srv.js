@@ -149,9 +149,6 @@ module.exports = (srv) => {
           const find = UNIQUE_ID_HEADER.find(i => i.PRODUCT_ID === obj.PRODUCT && i.UNIQUE_ID == obj.UNIQUE_ID);
           const findDate = CP_SEED_ORDER.find(i => new Date(i.MATERIAL_AVAIL_DATE).getTime() === new Date(obj.MATERIAL_AVAIL_DATE).getTime() && i.UNIQUE_ID == obj.UNIQUE_ID)
           if (find && !findDate) {
-            // if (CP_SEED_ORDER.find(i => i.MATERIAL_AVAIL_DATE === obj.MATERIAL_AVAIL_DATE && i.UNIQUE_ID == obj.UNIQUE_ID)) {
-            //   await cds.run(DELETE.from("CP_SEED_ORDER").where({ MATERIAL_AVAIL_DATE: obj.MATERIAL_AVAIL_DATE, UNIQUE_ID: obj.UNIQUE_ID }))
-            // }
             var orderId = "SE000" + (id + count);
             count = count + 1;
             const ORDER = {
@@ -163,21 +160,11 @@ module.exports = (srv) => {
               CREADTED_DATE: new Date().toLocaleDateString(),
               CREATED_BY: mail,
             }
-            returnsData.push(ORDER)
-            await cds.run(
-              INSERT.into("CP_SEED_ORDER").entries(ORDER))
-          } else {
-            //if (!invalidReturnsData1.includes(`(${obj.PRODUCT},${obj.UNIQUE_ID}`) || !invalidReturnsData2.includes(`(${obj.PRODUCT},${obj.UNIQUE_ID},${obj.MATERIAL_AVAIL_DATE})`)) {
-            if (!find) {
-              invalidReturnsData1.push(`${obj.PRODUCT} WITH ID ${obj.UNIQUE_ID} DOES NOT EXIST`);
-            }
-            else if (find) {
-              invalidReturnsData2.push(`${obj.PRODUCT} WITH ID ${obj.UNIQUE_ID} ALREADY EXIST ON ${obj.MATERIAL_AVAIL_DATE}`);
-            }
-            //}
+            returnsData.push(ORDER.UNIQUE_ID)
+            await cds.run(INSERT.into("CP_SEED_ORDER").entries(ORDER))
           }
         }
-        return JSON.stringify([returnsData, [...invalidReturnsData1, ...invalidReturnsData2]]);
+        return JSON.stringify(returnsData);
       } catch (e) {
         throw e;
       }
