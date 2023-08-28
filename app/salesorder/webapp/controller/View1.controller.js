@@ -9,7 +9,7 @@ sap.ui.define(
   function (Controller, Spreadsheet) {
     "use strict";
 
-    let that, validList = [], allDate;
+    let that;
     return Controller.extend("salesorder.controller.View1", {
       onInit: function () {
         that = this;
@@ -200,7 +200,7 @@ sap.ui.define(
         }
       },
 
-      onSearch: function (oEvent) {
+      onSearch: function () {
         const sValue = that.getView().byId("search").getValue(),
           table = that.getView().byId("table"),
           oBinding = table.getBinding("items"),
@@ -228,9 +228,12 @@ sap.ui.define(
             name: "salesorder.view.order",
           });
         }
-        await that.orderDialog.then((dialog) => {
+        try {
+          const dialog = await that.orderDialog;
           dialog.open();
-        });
+        } catch (e) {
+          console.error(e)
+        }
       },
 
       orderNow: function () {
@@ -331,11 +334,14 @@ sap.ui.define(
         val = val.replace(/[^\d]/g, "");
         input.setValue(val);
       },
-      ondownloadTemplete: function () {
-        that.datePicker
-          .then(dialog => {
-            dialog.open()
-          })
+      
+      ondownloadTemplete: async function () {
+        try {
+          const dialog = await that.datePicker;
+          dialog.open();
+        } catch (e) {
+          console.error(e)
+        }
       },
 
       onCloseDate: function () {
@@ -397,13 +403,10 @@ sap.ui.define(
         });
       },
 
-      upload: function (oEvent) {
-        //that.byId("table").setModel(new sap.ui.model.json.JSONModel({ salesOrder: [] }));
-        let excelData = {},
-          file = this.byId("fileUpload").oFileUpload.files[0],
+      upload: function () {
+        const file = that.byId("fileUpload").oFileUpload.files[0],
           reader = new FileReader();
-        this.byId("fileUpload").setValue("");
-        validList = [];
+        that.byId("fileUpload").setValue("");
         if (!file) {
           return sap.m.MessageToast.show("SELECT A EXCEL FILE");
         }
@@ -413,31 +416,30 @@ sap.ui.define(
               type: "binary"
             });
           workbook.SheetNames.forEach(function (sheetName) {
-            excelData = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheetName]);
-            allDate = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheetName], { header: 1 })[0].filter(date => date !== "PRODUCT" && date !== "UNIQUE_ID");
-            that.excelOrder(excelData);
+            const excelData = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheetName]),
+              allDate = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheetName], { header: 1 })[0].filter(date => date !== "PRODUCT" && date !== "UNIQUE_ID");
+            that.excelOrder(excelData, allDate);
           });
         };
         reader.readAsBinaryString(file);
       },
 
       createColumnConfig: function (list) {
-        const aCols = [],
-          noOfColumn = list.length;
-        for (let i = 0; i < noOfColumn; i++) {
+        const aCols = [];
+        list.forEach((item) => {
           const temp = {
-            property: list[i],//property: list[i].split(' ').join('_')
+            property: item,//property: list[i].split(' ').join('_')
           }
-          if (list[i] != "PRODUCT") {
+          if (item != "PRODUCT") {
             temp.type = sap.ui.export.EdmType.Number
           }
           aCols.push(temp);
-        }
+        })
         return aCols;
       },
 
-      excelOrder: async function (catchData) {
-        let SEED_ORDER, HEADER_ITEM;
+      excelOrder: async function (catchData, allDate) {
+        let SEED_ORDER, HEADER_ITEM, validList = [];
         that.getOwnerComponent().getModel()
           .read("/SEED_ORDER", {
             success: function (seedorder) {
@@ -478,7 +480,7 @@ sap.ui.define(
                       }
                       else if (thisDate.find(value => value === "+")) {
                         temp.TYPE = "INVALID"
-                        temp.REASON = "NULL"
+                        temp.REASON = "NULL_QUANTITY"
                       } else if (thisDate.find(value => !Number(value))) {
                         const string = thisDate.find(value => !Number(value)),
                           index = thisDate.indexOf(string);
@@ -511,7 +513,7 @@ sap.ui.define(
                         that.byId("typeSelect").setModel(new sap.ui.model.json.JSONModel({ types: [{ type: "ALL" }, { type: "VALID" }, { type: "INVALID" }] }));
                         that.byId("reasonSelect").setModel(new sap.ui.model.json.JSONModel({
                           reason:
-                            [{ reason: "ALL" }, { reason: "NULL" }, { reason: "NULL_PRODUCT" }, { reason: "NULL_ID" },
+                            [{ reason: "ALL" }, { reason: "NULL_QUANTITY" }, { reason: "NULL_PRODUCT" }, { reason: "NULL_ID" },
                             { reason: "INVALID_QUANTITY" }, { reason: "INVALID_ID" }, { reason: "ALREADY_EXIST_ON_THAT_DATE" }]
                         }));
                       })
@@ -596,25 +598,25 @@ sap.ui.define(
           oTable.removeAllColumns();
           oTable.removeAllCustomData();
         }
-        const noOfColumn = Object.keys(array[0]).length;
-        for (let i = 0; i < noOfColumn; i++) {
+        const columns = Object.keys(array[0]);
+        columns.forEach((column) => {
           const oColumn = new sap.m.Column(
             {
               header: new sap.m.Label({
-                text: Object.keys(array[0])[i],
+                text: column,
               }),
             }
           );
           oTable.addColumn(oColumn);
-        }
+        })
         const oCell = [];
-        for (let i = 0; i < noOfColumn; i++) {
-          const char = "{" + Object.keys(array[0])[i] + "}",
+        columns.forEach((column) => {
+          const char = "{" + column + "}",
             cell1 = new sap.m.Text({
               text: char
             });
           oCell.push(cell1);
-        }
+        })
         const aColList = new sap.m.ColumnListItem(
           {
             cells: oCell
@@ -623,6 +625,7 @@ sap.ui.define(
         oTable.bindItems("/items", aColList);
         that.addClass(oTable);
       },
+
       addClass: function (oTable) {
         oTable.getItems()
           .forEach(items => {
@@ -635,34 +638,33 @@ sap.ui.define(
           })
         oTable.getItems()
           .forEach(items => {
-            const length = items.getCells().length - 2;
-            for (let i = 0; i < length; i++) {
-              const text = items.getCells()[i].getText();
+            items.getCells().forEach((cell) => {
+              const text = cell.getText();
               if (text === "+" || text.endsWith(" ")) {
-                items.getCells()[i].addStyleClass("crimson");
+                cell.addStyleClass("crimson");
                 items.addStyleClass("redBorder")
               }
               if (text === "+") {
-                items.getCells()[i].addStyleClass("rotate");
-                items.addStyleClass("redBorder")
+                cell.addStyleClass("rotate");
               }
-            }
+            })
           })
       },
+
       removeClass: function (oTable) {
         oTable.getItems()
           .forEach(items => {
-            const length = items.getCells().length - 1;
-            for (let i = 0; i < length; i++) {
-              items.getCells()[i].removeStyleClass("red");
-              items.getCells()[i].removeStyleClass("crimson");
-              items.getCells()[i].removeStyleClass("green");
-              items.getCells()[i].removeStyleClass("rotate");
-              items.removeStyleClass("redBorder");
-              items.removeStyleClass("greenBorder");
-            }
+            items.getCells().forEach((cell) => {
+              cell.removeStyleClass("red");
+              cell.removeStyleClass("crimson");
+              cell.removeStyleClass("green");
+              cell.removeStyleClass("rotate");
+            })
+            items.removeStyleClass("redBorder");
+            items.removeStyleClass("greenBorder");
           })
       },
+
       onChangeType: function () {
         const key = that.byId("typeSelect").getSelectedKey();
         if (key === "VALID") {
@@ -670,7 +672,7 @@ sap.ui.define(
           that.byId("reasonBox").setVisible(false);
         }
         else {
-          that.byId("reasonSelect").setModel(new sap.ui.model.json.JSONModel({ reason: [{ reason: "ALL" }, { reason: "NULL" }, { reason: "NULL_PRODUCT" }, { reason: "NULL_ID" }, { reason: "INVALID_QUANTITY" }, { reason: "INVALID_ID" }, { reason: "ALREADY_EXIST_ON_THAT_DATE" }] }));
+          that.byId("reasonSelect").setModel(new sap.ui.model.json.JSONModel({ reason: [{ reason: "ALL" }, { reason: "NULL_QUANTITY" }, { reason: "NULL_PRODUCT" }, { reason: "NULL_ID" }, { reason: "INVALID_QUANTITY" }, { reason: "INVALID_ID" }, { reason: "ALREADY_EXIST_ON_THAT_DATE" }] }));
           that.byId("reasonBox").setVisible(true);
         }
         const items = that.byId("table2").getBinding("items");
@@ -683,6 +685,7 @@ sap.ui.define(
         that.removeClass(that.byId("table2"))
         that.addClass(that.byId("table2"))
       },
+
       onChangeReason: function () {
         let key1 = that.byId("typeSelect").getSelectedKey(),
           key2 = that.byId("reasonSelect").getSelectedKey();
