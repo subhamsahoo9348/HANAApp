@@ -20,7 +20,9 @@
         "build": "rimraf resources mta_archives && mbt build --mtar archive",
         "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
         "watch-headeritem": "cds watch --open headeritem/webapp/index.html?sap-ui-xx-viewCache=false",
-        "watch-project1": "cds watch --open project1/webapp/index.html?sap-ui-xx-viewCache=false"
+        "watch-project1": "cds watch --open project1/webapp/index.html?sap-ui-xx-viewCache=false",
+        "watch-dragand": "cds watch --open dragand/webapp/index.html?sap-ui-xx-viewCache=false",
+        "watch-spotify": "cds watch --open spotify/webapp/index.html?sap-ui-xx-viewCache=false"
     },
     "cds": {
         "build": {

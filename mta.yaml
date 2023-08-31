@@ -63,6 +63,18 @@ modules:
       - headeritem.zip
       name: headeritem
       target-path: resources/
+    - artifacts:
+      - draganddr.zip
+      name: draganddr
+      target-path: resources/
+    - artifacts:
+      - dragand.zip
+      name: dragand
+      target-path: resources/
+    - artifacts:
+      - spotify.zip
+      name: spotify
+      target-path: resources/
 - name: salesorder
   type: html5
   path: app/salesorder
@@ -76,6 +88,36 @@ modules:
 - name: headeritem
   type: html5
   path: app/headeritem
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: draganddr
+  type: html5
+  path: draganddr
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: dragand
+  type: html5
+  path: app/dragand
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: spotify
+  type: html5
+  path: app/spotify
   build-parameters:
     build-result: dist
     builder: custom
