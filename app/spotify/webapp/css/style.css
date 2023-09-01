@@ -14,9 +14,21 @@
     font-size: 150%;
 }
 
+.homeIconAtSearch {
+    background-color: #3d3c3c;
+    color: #7f8c8d;
+    font-size: 150%;
+}
+
 .sideBar1 .searchIcon {
     background-color: #3d3c3c;
     color: #7f8c8d;
+    font-size: 150%;
+}
+
+.searchIconsAtSearch {
+    background-color: #3d3c3c;
+    color: white;
     font-size: 150%;
 }
 
@@ -32,8 +44,20 @@
     font-weight: bolder;
 }
 
+.sideBar1 .textAtSearch {
+    color: #7f8c8d;
+    margin-left: 25px;
+    font-weight: bolder;
+}
+
 .sideBar1 .text2 {
     color: #7f8c8d;
+    margin-left: 25px;
+    font-weight: bolder;
+}
+
+.sideBar1 .text2AtSearch {
+    color: white;
     margin-left: 25px;
     font-weight: bolder;
 }
@@ -190,7 +214,7 @@
 .mainList .topBar .Sign_up span,
 .mainList .topBar .Log_in span {
     top: 7px;
-    left: 1250px;
+    left: 900px;
     color: #7f8c8d;
     font-size: 1rem;
     font-weight: 700;
@@ -199,7 +223,7 @@
 
 .mainList .topBar .Log_in span {
     top: 1px;
-    left: 1260px;
+    left: 910px;
     border-radius: 30px;
     color: black !important;
     height: 35px;
@@ -239,14 +263,18 @@
     /* border: 2px solid blueviolet; */
 }
 
-.mainList .focusBar .focus .focus_Card:hover{
+.mainList .focusBar .focus .focus_Card:hover {
     background-color: rgb(80, 77, 77);
     cursor: pointer;
-    transition-duration: 1000ms;
+
+    .play {
+        visibility: visible !important;
+    }
 }
 
 .mainList .focusBar .focus .focus_Card .card {
     /* border: 2px solid red; */
+    position: relative;
     height: 243px;
     width: 153px;
     margin: 12px 0px 0px 14px;
@@ -271,4 +299,148 @@
 
 .mainList .focusBar .focus .focus_Card .card .texts .miniTittle {
     color: #7f8c8d;
+}
+
+.mainList .focusBar .focus .focus_Card .card .play {
+    background-color: rgb(136, 254, 136);
+    position: absolute;
+    top: 97px;
+    left: 100px;
+    z-index: 50;
+    border-radius: 70%;
+    rotate: 90deg;
+    visibility: hidden;
+}
+
+.mainList .topBar .input {
+    left: 20px;
+}
+
+.mainList .topBar .input #container-spotify---View2--input-content {
+    top: 6px;
+    padding-left: 40px;
+    border-radius: 30px;
+    height: 38px;
+    background-color: rgb(50, 48, 48);
+}
+
+.mainList .topBar .input span {
+    top: 6px;
+    right: 320px;
+    font-size: 120%;
+    color: white;
+}
+
+.mainList .topBar .input_Home {
+    visibility: hidden;
+}
+
+.mainList .mainText {
+    top: 64px !important;
+    background-color: rgb(50, 48, 48);
+    border: none;
+}
+.mainList .mainText{
+    margin-left: 35px;
+}
+
+.mainList .mainText .browse_all {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: var(--font-family, CircularSpTitle, CircularSpTitle-Tall, CircularSp-Arab, CircularSp-Hebr, CircularSp-Cyrl, CircularSp-Grek, CircularSp-Deva, var(--fallback-fonts, sans-serif));
+}
+
+.mainList .types {
+    top: 85px;
+    background-color: rgb(50, 48, 48);
+    border: none;
+}
+
+.mainList .types .allTypesList .Rows .firstRow {
+    background-color: rgb(50, 48, 48);
+}
+
+.mainList .types .allTypesList .Rows {
+    border: none;
+}
+
+.mainList .types .allTypesList .Rows .firstRow .card {
+    margin-left: 30px;
+    position: relative;
+}
+
+
+.mainList .types .allTypesList .Rows .firstRow .card .mainText {
+    color: white;
+    background-color: transparent;
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: var(--font-family, CircularSpTitle, CircularSpTitle-Tall, CircularSp-Arab, CircularSp-Hebr, CircularSp-Cyrl, CircularSp-Grek, CircularSp-Deva, var(--fallback-fonts, sans-serif));
+}
+
+.mainList .types .allTypesList .Rows .firstRow .card .card_box span {
+    margin-top: 15px;
+    margin-left: 15px;
+}
+
+.mainList .types .allTypesList .Rows .firstRow .card .card_box .image {
+    position: absolute;
+    top: 45px;
+    left: 95px;
+    z-index: 50;
+    rotate: 20deg;
+}
+
+.mainList .types .allTypesList .Rows .firstRow .podcasts {
+    background-color: rgb(39, 133, 106);
+}
+
+.mainList .types .allTypesList .Rows .firstRow .madeforyou {
+    background-color: rgb(30, 50, 100);
+}
+
+.mainList .types .allTypesList .Rows .firstRow .charts {
+    background-color: rgb(141, 103, 171);
+}
+
+.mainList .types .allTypesList .Rows .firstRow .newReleases {
+    background-color: rgb(232, 17, 91);
+}
+
+.mainList .types .allTypesList .Rows .firstRow .discover {
+    background-color: rgb(141, 103, 171);
+}
+
+.mainList .types .allTypesList .Rows .firstRow .liveEvents {
+    background-color: rgb(115, 88, 255);
+}
+
+.mainList .types .allTypesList .Rows .firstRow .bollywood {
+    background-color: rgb(180, 155, 200);
+}
+.mainList .types .allTypesList .Rows .firstRow .punjabi {
+    background-color: rgb(240, 55, 165);
+}
+.mainList .types .allTypesList .Rows .firstRow .tamil {
+    background-color: rgb(156, 240, 225);
+}
+.mainList .types .allTypesList .Rows .firstRow .telugu {
+    background-color: rgb(215, 242, 125);
+}
+.mainList .types .allTypesList .Rows .firstRow .radar {
+    background-color: rgb(115, 88, 255);
+}
+.mainList .types .allTypesList .Rows .firstRow .equal {
+    background-color: rgb(20, 138, 8);
+}
+.mainList .types .allTypesList .Rows .firstRow .gaming {
+    background-color: rgb(232, 17, 91);
+}
+.mainList .types .allTypesList .Rows .firstRow .indie {
+    background-color: rgb(141, 103, 171);
+}
+
+.spacer{
+    background-color: rgb(50, 48, 48);
 }

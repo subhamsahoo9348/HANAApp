@@ -7,22 +7,26 @@ sap.ui.define([
     function (Controller) {
         "use strict";
 
+        let that;
         return Controller.extend("spotify.controller.View1", {
             onInit: function () {
-                // let data = [
-                //     { id: 1, orderQuantity: 10, orderedDate: "2023-08-01" },
-                //     { id: 1, orderQuantity: 20, orderedDate: "2023-08-02" },
-                //     { id: 1, orderQuantity: 15, orderedDate: "2023-08-03" },
-                //     { id: 1, orderQuantity: 5, orderedDate: "2023-08-04" },
-                //     { id: 1, orderQuantity: 25, orderedDate: "2023-08-05" },
-                  
-                //   ];
+                that = this;
+                this._oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+                this._oRouter.attachRouteMatched(this.onHome, this);
+            },
+            onPressSearch: function () {
+                that.getOwnerComponent().getRouter().navTo("View2");
+            },
+            onHome: function () {
+                that.byId("homeIcon").removeStyleClass("homeIconAtSearch");
+                that.byId("searchIcon").removeStyleClass("searchIconsAtSearch");
+                that.byId("homeIcon").addStyleClass("homeIcon");
+                that.byId("searchIcon").addStyleClass("searchIcon");
 
-                //   const temp ={id:1}
-                //   data.forEach(obj=>{
-                //     temp[obj.orderedDate] = obj.orderQuantity;
-                //   })
-                //   debugger
+                that.byId("text").removeStyleClass("textAtSearch");
+                that.byId("text2").removeStyleClass("text2AtSearch");
+                that.byId("text").addStyleClass("text");
+                that.byId("text2").addStyleClass("text2");
             }
         });
     });

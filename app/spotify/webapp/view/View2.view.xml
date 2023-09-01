@@ -1,0 +1,369 @@
+<mvc:View
+    xmlns:calendar="sap.ui.unified.calendar"
+    xmlns:cards="sap.f.cards"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.f"
+    controllerName="spotify.controller.View2"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+>
+    <Page
+        id="page"
+        showHeader="false"
+    >
+        <content>
+            <List
+                class="sideBar1"
+                width="360px"
+            >
+                <items>
+                    <CustomListItem class="homeContent">
+                        <core:Icon
+                            src="sap-icon://home"
+                            id="homeIcon"
+                            class="homeIcon"
+                            height="21px"
+                            width="20px"
+                            press="onPressHome"
+                        />
+                        <Text
+                            text="Home"
+                            class="text"
+                            id="text"
+                        />
+                    </CustomListItem>
+                    <CustomListItem class="homeContent">
+                        <core:Icon
+                            src="sap-icon://search"
+                            id="searchIcon"
+                            class="searchIcon"
+                            height="21px"
+                            width="20px"
+                            press="onPressSearch"
+                        />
+                        <Text
+                            text="Search"
+                            class="text2"
+                            id="text2"
+                        />
+                    </CustomListItem>
+                </items>
+            </List>
+            <List
+                class="sideBar2"
+                width="360px"
+            >
+                <items>
+                    <CustomListItem class="yourLibary">
+                        <HBox>
+                            <HBox>
+                                <core:Icon
+                                    src="sap-icon://course-book"
+                                    class="icon"
+                                    height="21px"
+                                    width="20px"
+                                />
+                                <Text
+                                    text="Your Libray"
+                                    class="text"
+                                />
+                            </HBox>
+                            <core:Icon
+                                src="sap-icon://add"
+                                class="icon2"
+                                height="21px"
+                                width="20px"
+                            />
+                        </HBox>
+                    </CustomListItem>
+                    <CustomListItem class="box1">
+                        <Text
+                            text="Create your first playlist"
+                            class="text1"
+                        />
+                        <Text
+                            text="it's easy, we'll help you"
+                            class="text2"
+                        />
+                        <Button
+                            text="Create playlist"
+                            class="button"
+                        />
+                    </CustomListItem>
+                    <CustomListItem class="box1">
+                        <Text
+                            text="Lets find some podcasts to follow"
+                            class="text1"
+                        />
+                        <Text
+                            text="we'll keep you updated on new episodes"
+                            class="text2"
+                        />
+                        <Button
+                            text="Browse podcasts"
+                            class="button"
+                        />
+                    </CustomListItem>
+                    <CustomListItem class="box2">
+                        <HBox>
+                            <Text
+                                text="Legal"
+                                class="text"
+                            />
+                            <Text
+                                text="Privacy Center"
+                                class="text"
+                            />
+                            <Text
+                                text="Privacy Policy"
+                                class="text"
+                            />
+                        </HBox>
+                        <HBox>
+                            <Text
+                                text="Cookies"
+                                class="text"
+                            />
+                            <Text
+                                text="About Ads"
+                                class="text"
+                            />
+                            <Text
+                                text="Accessibility"
+                                class="text"
+                            />
+                        </HBox>
+                        <Button
+                            icon="sap-icon://world"
+                            text="English"
+                            class="button1"
+                        />
+                    </CustomListItem>
+                </items>
+            </List>
+            <List
+                class="mainList"
+                width="1540px"
+            >
+                <CustomListItem class="topBar">
+                    <HBox class="arrowContain">
+                        <core:Icon
+                            src="sap-icon://slim-arrow-left"
+                            class="leftArrow"
+                        />
+                        <core:Icon
+                            src="sap-icon://slim-arrow-right"
+                            class="rightArrow"
+                        />
+                        <Input
+                            showValueHelp="true"
+                            id="input"
+                            class="input"
+                            width="358px"
+                            placeholder="what do you want to listen to?"
+                            valueHelpIconSrc="sap-icon://search"
+                        />
+                        <Button
+                            text="Sign up"
+                            type="Transparent"
+                            class="Sign_up"
+                        />
+                        <Button
+                            text="Log in"
+                            class="Log_in"
+                        />
+                    </HBox>
+                </CustomListItem>
+                <CustomListItem class="mainText">
+                <Text text="Browse all" id="browse_all" class="browse_all"></Text>
+                </CustomListItem>
+                <CustomListItem class="types">
+                <List class="allTypesList">
+                <CustomListItem class="Rows">
+                <HBox class="firstRow">
+                        <f:Card
+                            class="card podcasts"
+                            height="183px"
+                            width="183px"
+                        >
+                            <f:content>
+                            <VBox class="card_box">
+                            <Text text="Podcasts" class="mainText"></Text>
+                            <Image height="100px" width="100px" class="image" src="https://i.scdn.co/image/567158eb895ad26718a814345af0fc43ee785ec5"></Image>
+                            </VBox>
+                            </f:content>
+                        </f:Card>
+                        <f:Card
+                            class="card madeforyou"
+                            height="183px"
+                            width="183px"
+                        >
+                            <f:content>
+                            <VBox class="card_box">
+                            <Text text="Made For You" class="mainText"></Text>
+                            <Image height="100px" width="100px" class="image" src="	https://t.scdn.co/images/ea364e99656e46a096ea1df50f581efe"></Image>
+                            </VBox>
+                            </f:content>
+                        </f:Card>
+                        <f:Card
+                            class="card charts"
+                            height="183px"
+                            width="183px"
+                        >
+                            <f:content>
+                            <VBox class="card_box">
+                            <Text text="Charts" class="mainText"></Text>
+                            <Image height="100px" width="100px" class="image" src="	https://charts-images.scdn.co/assets/locale_en/regional/weekly/region_global_default.jpg"></Image>
+                            </VBox>
+                            </f:content>
+                        </f:Card>
+                        <f:Card
+                            class="card newReleases"
+                            height="183px"
+                            width="183px"
+                        >
+                            <f:content>
+                            <VBox class="card_box">
+                            <Text text="New Releases" class="mainText"></Text>
+                            <Image height="100px" width="100px" class="image" src="	https://i.scdn.co/image/ab67706f000000027ea4d505212b9de1f72c5112"></Image>
+                            </VBox>
+                            </f:content>
+                        </f:Card>
+
+                        <f:Card
+                            class="card discover"
+                            height="183px"
+                            width="183px"
+                        >
+                            <f:content>
+                            <VBox class="card_box">
+                            <Text text="Discover" class="mainText"></Text>
+                            <Image height="100px" width="100px" class="image" src="	https://t.scdn.co/images/d0fb2ab104dc4846bdc56d72b0b0d785.jpeg"></Image>
+                            </VBox>
+                            </f:content>
+                        </f:Card>
+
+                        <f:Card
+                            class="card liveEvents"
+                            height="183px"
+                            width="183px"
+                        >
+                            <f:content>
+                            <VBox class="card_box">
+                            <Text text="Live Events" class="mainText"></Text>
+                            <Image height="100px" width="100px" class="image" src="	https://concerts.spotifycdn.com/images/live-events_category-image.jpg"></Image>
+                            </VBox>
+                            </f:content>
+                        </f:Card>
+                        <f:Card
+                            class="card bollywood"
+                            height="183px"
+                            width="183px"
+                        >
+                            <f:content>
+                            <VBox class="card_box">
+                            <Text text="Bollywood" class="mainText"></Text>
+                            <Image height="100px" width="100px" class="image" src="https://t.scdn.co/images/8a0fabf4d537486e9b5a4623c921f77e.jpeg"></Image>
+                            </VBox>
+                            </f:content>
+                        </f:Card>
+                </HBox>
+
+                <!-- //2nd row -->
+                <HBox width="100%" height="30px" class="spacer"></HBox>
+                <HBox class="firstRow">
+                        <f:Card
+                            class="card punjabi"
+                            height="183px"
+                            width="183px"
+                        >
+                            <f:content>
+                            <VBox class="card_box">
+                            <Text text="Punjabi" class="mainText"></Text>
+                            <Image height="100px" width="100px" class="image" src="	https://t.scdn.co/images/11e89d14d7844b7eb3d26619cb662a9b.jpeg"></Image>
+                            </VBox>
+                            </f:content>
+                        </f:Card>
+                        <f:Card
+                            class="card tamil"
+                            height="183px"
+                            width="183px"
+                        >
+                            <f:content>
+                            <VBox class="card_box">
+                            <Text text="tamil" class="mainText"></Text>
+                            <Image height="100px" width="100px" class="image" src="https://t.scdn.co/images/2117dadfdd254825b3fbc52e3652ed56.jpeg"></Image>
+                            </VBox>
+                            </f:content>
+                        </f:Card>
+                        <f:Card
+                            class="card telugu"
+                            height="183px"
+                            width="183px"
+                        >
+                            <f:content>
+                            <VBox class="card_box">
+                            <Text text="Telugu" class="mainText"></Text>
+                            <Image height="100px" width="100px" class="image" src="https://t.scdn.co/images/96b5132876eb4e818723555ce365cd87.jpeg"></Image>
+                            </VBox>
+                            </f:content>
+                        </f:Card>
+                        <f:Card
+                            class="card indie"
+                            height="183px"
+                            width="183px"
+                        >
+                            <f:content>
+                            <VBox class="card_box">
+                            <Text text="Indie" class="mainText"></Text>
+                            <Image height="100px" width="100px" class="image" src="	https://t.scdn.co/images/fe06caf056474bc58862591cd60b57fc.jpeg"></Image>
+                            </VBox>
+                            </f:content>
+                        </f:Card>
+
+                        <f:Card
+                            class="card gaming"
+                            height="183px"
+                            width="183px"
+                        >
+                            <f:content>
+                            <VBox class="card_box">
+                            <Text text="Gaming" class="mainText"></Text>
+                            <Image height="100px" width="100px" class="image" src="https://i.scdn.co/image/ab67706f0000000221a2087747d946f16704b8af"></Image>
+                            </VBox>
+                            </f:content>
+                        </f:Card>
+
+                        <f:Card
+                            class="card radar"
+                            height="183px"
+                            width="183px"
+                        >
+                            <f:content>
+                            <VBox class="card_box">
+                            <Text text="RADAR" class="mainText"></Text>
+                            <Image height="100px" width="100px" class="image" src="	https://t.scdn.co/images/c6677aa51acf4121b66b9d1f231bd427.png"></Image>
+                            </VBox>
+                            </f:content>
+                        </f:Card>
+                        <f:Card
+                            class="card equal"
+                            height="183px"
+                            width="183px"
+                        >
+                            <f:content>
+                            <VBox class="card_box">
+                            <Text text="EQUAL" class="mainText"></Text>
+                            <Image height="100px" width="100px" class="image" src="https://i.scdn.co/image/ab67706f0000000284a1ec26f589f0d569805a07"></Image>
+                            </VBox>
+                            </f:content>
+                        </f:Card>
+                </HBox>
+                </CustomListItem>
+                </List>
+                </CustomListItem>
+            </List>
+        </content>
+    </Page>
+</mvc:View>

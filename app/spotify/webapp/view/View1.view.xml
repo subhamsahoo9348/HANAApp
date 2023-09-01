@@ -1,249 +1,685 @@
-<mvc:View xmlns:calendar="sap.ui.unified.calendar" xmlns:cards="sap.f.cards" xmlns:core="sap.ui.core" xmlns:f="sap.f" controllerName="spotify.controller.View1"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns="sap.m">
-    <Page id="page" showHeader="false">
-       <content>
-       <List class="sideBar1" width="360px">
-       <items >
-       <CustomListItem class="homeContent">
-       <core:Icon src="sap-icon://home" class="homeIcon" height="21px" width="20px"></core:Icon>
-       <Text text="Home" class="text"></Text>
-       </CustomListItem>
-       <CustomListItem class="homeContent">
-       <core:Icon src="sap-icon://search" class="searchIcon" height="21px" width="20px"></core:Icon>
-       <Text text="Search" class="text2"></Text>
-       </CustomListItem>
-       </items>
-       </List>
-       <List class="sideBar2" width="360px" >
-       <items>
-       <CustomListItem class="yourLibary">
-       <HBox >
-       <HBox >
-       <core:Icon src="sap-icon://course-book" class="icon" height="21px" width="20px"></core:Icon>
-       <Text text="Your Libray" class="text"></Text>
-       </HBox>
-       <core:Icon src="sap-icon://add" class="icon2" height="21px" width="20px"></core:Icon>
-       </HBox>
-       </CustomListItem>
-       <CustomListItem class="box1">
-       <Text text="Create your first playlist" class="text1"></Text>
-       <Text text="it's easy, we'll help you" class="text2"></Text>
-       <Button text="Create playlist" class="button"></Button>
-       </CustomListItem>
-       <CustomListItem class="box1">
-       <Text text="Lets find some podcasts to follow" class="text1"></Text>
-       <Text text="we'll keep you updated on new episodes" class="text2"></Text>
-       <Button text="Browse podcasts" class="button"></Button>
-       </CustomListItem>
-       <CustomListItem class="box2">
-       <HBox >
-       <Text text="Legal"  class="text"></Text>
-       <Text text="Privacy Center" class="text"></Text>
-       <Text text="Privacy Policy" class="text"></Text>
-       </HBox>
-       <HBox >
-       <Text text="Cookies"  class="text"></Text>
-       <Text text="About Ads" class="text"></Text>
-       <Text text="Accessibility" class="text"></Text>
-       </HBox>
-       <Button icon="sap-icon://world" text="English" class="button1"></Button>
-       </CustomListItem>
-       </items>
-       </List>
-       <List class="mainList" width="1540px">
-       <CustomListItem class="topBar">
-       <HBox class="arrowContain">
-       <core:Icon src="sap-icon://slim-arrow-left" class="leftArrow" />
-       <core:Icon src="sap-icon://slim-arrow-right" class="rightArrow"  />
-       <Button text="Sign up" type="Transparent" class="Sign_up"/>
-       <Button text="Log in" class="Log_in" />
-       </HBox>
-       </CustomListItem>
-       <CustomListItem class="focusBar">
-       <Text text="Focus" class="focus_text" />
-       <HBox class="focus">
+<mvc:View
+    xmlns:calendar="sap.ui.unified.calendar"
+    xmlns:cards="sap.f.cards"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.f"
+    controllerName="spotify.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+>
+    <Page
+        id="page"
+        showHeader="false"
+    >
+        <content>
+            <List
+                class="sideBar1"
+                width="360px"
+            >
+                <items>
+                    <CustomListItem class="homeContent">
+                        <core:Icon
+                            src="sap-icon://home"
+                            id="homeIcon"
+                            class="homeIcon"
+                            height="21px"
+                            width="20px"
+                        />
+                        <Text
+                            text="Home"
+                            class="text"
+                            id="text"
+                        />
+                    </CustomListItem>
+                    <CustomListItem class="homeContent">
+                        <core:Icon
+                            src="sap-icon://search"
+                            id="searchIcon"
+                            class="searchIcon"
+                            height="21px"
+                            width="20px"
+                            press="onPressSearch"
+                        />
+                        <Text
+                            text="Search"
+                            class="text2"
+                            id="text2"
+                        />
+                    </CustomListItem>
+                </items>
+            </List>
+            <List
+                class="sideBar2"
+                width="360px"
+            >
+                <items>
+                    <CustomListItem class="yourLibary">
+                        <HBox>
+                            <HBox>
+                                <core:Icon
+                                    src="sap-icon://course-book"
+                                    class="icon"
+                                    height="21px"
+                                    width="20px"
+                                />
+                                <Text
+                                    text="Your Libray"
+                                    class="text"
+                                />
+                            </HBox>
+                            <core:Icon
+                                src="sap-icon://add"
+                                class="icon2"
+                                height="21px"
+                                width="20px"
+                            />
+                        </HBox>
+                    </CustomListItem>
+                    <CustomListItem class="box1">
+                        <Text
+                            text="Create your first playlist"
+                            class="text1"
+                        />
+                        <Text
+                            text="it's easy, we'll help you"
+                            class="text2"
+                        />
+                        <Button
+                            text="Create playlist"
+                            class="button"
+                        />
+                    </CustomListItem>
+                    <CustomListItem class="box1">
+                        <Text
+                            text="Lets find some podcasts to follow"
+                            class="text1"
+                        />
+                        <Text
+                            text="we'll keep you updated on new episodes"
+                            class="text2"
+                        />
+                        <Button
+                            text="Browse podcasts"
+                            class="button"
+                        />
+                    </CustomListItem>
+                    <CustomListItem class="box2">
+                        <HBox>
+                            <Text
+                                text="Legal"
+                                class="text"
+                            />
+                            <Text
+                                text="Privacy Center"
+                                class="text"
+                            />
+                            <Text
+                                text="Privacy Policy"
+                                class="text"
+                            />
+                        </HBox>
+                        <HBox>
+                            <Text
+                                text="Cookies"
+                                class="text"
+                            />
+                            <Text
+                                text="About Ads"
+                                class="text"
+                            />
+                            <Text
+                                text="Accessibility"
+                                class="text"
+                            />
+                        </HBox>
+                        <Button
+                            icon="sap-icon://world"
+                            text="English"
+                            class="button1"
+                        />
+                    </CustomListItem>
+                </items>
+            </List>
+            <List
+                class="mainList"
+                width="1540px"
+            >
+                <CustomListItem class="topBar">
+                    <HBox class="arrowContain">
+                        <core:Icon
+                            src="sap-icon://slim-arrow-left"
+                            class="leftArrow"
+                        />
+                        <core:Icon
+                            src="sap-icon://slim-arrow-right"
+                            class="rightArrow"
+                        />
+                        <Input
+                            showValueHelp="true"
+                            visible="true"
+                            id="input"
+                            class="input input_Home"
+                            width="348px"
+                            placeholder="what do you want to listen to?"
+                            valueHelpIconSrc="sap-icon://search"
+                        />
+                        <Button
+                            text="Sign up"
+                            type="Transparent"
+                            class="Sign_up"
+                        />
+                        <Button
+                            text="Log in"
+                            class="Log_in"
+                        />
+                    </HBox>
+                </CustomListItem>
+                <CustomListItem class="focusBar">
+                    <Text
+                        text="Focus"
+                        class="focus_text"
+                    />
+                    <HBox class="focus">
+                        <f:Card
+                            class="focus_Card"
+                            height="260px"
+                            width="183px"
+                        >
+                            <f:content>
+                                <VBox class="card">
+                                    <core:Icon
+                                        src="sap-icon://up"
+                                        class="play"
+                                        height="45px"
+                                        width="45px"
+                                    />
+                                    <core:Icon
+                                        src="sap-icon://up"
+                                        class="play"
+                                        height="45px"
+                                        width="45px"
+                                    />
+                                    <Image
+                                        src="https://i.scdn.co/image/ab67706f00000002d073e656e546e43bc387ad79"
+                                        class="image"
+                                        height="151px"
+                                        width="151px"
+                                    />
+                                    <VBox class="texts">
+                                        <Text
+                                            text="Peaceful Piano"
+                                            class="mainTittle"
+                                        />
+                                        <Text
+                                            text="Peaceful Piano to help"
+                                            class="miniTittle"
+                                        />
+                                        <Text
+                                            text="you slow down,..."
+                                            class="miniTittle"
+                                        />
+                                    </VBox>
+                                </VBox>
+                            </f:content>
+                        </f:Card>
 
-       <f:Card class="focus_Card" height="260px" width="183px" >
-       <f:content>
-       <VBox class="card">
-       <Image src="https://i.scdn.co/image/ab67706f00000002d073e656e546e43bc387ad79" class="image" height="151px" width="151px"></Image>
-       <VBox class="texts">
-       <Text text="Peaceful Piano" class="mainTittle" />
-       <Text text="Peaceful Piano to help" class="miniTittle" />
-       <Text text="you slow down,..." class="miniTittle" />
-       </VBox>
-       </VBox>
-       </f:content>
-       </f:Card>
+                        <f:Card
+                            class="focus_Card"
+                            height="260px"
+                            width="183px"
+                        >
+                            <f:content>
+                                <VBox class="card">
+                                    <core:Icon
+                                        src="sap-icon://up"
+                                        class="play"
+                                        height="45px"
+                                        width="45px"
+                                    />
+                                    <Image
+                                        src="https://i.scdn.co/image/ab67706f00000002d6d48b11fd3b11da654c3519"
+                                        class="image"
+                                        height="151px"
+                                        width="151px"
+                                    />
+                                    <VBox class="texts">
+                                        <Text
+                                            text="Deep Focus"
+                                            class="mainTittle"
+                                        />
+                                        <Text
+                                            text="keep calm and focus"
+                                            class="miniTittle"
+                                        />
+                                        <Text
+                                            text="with ambient and pos..."
+                                            class="miniTittle"
+                                        />
+                                    </VBox>
+                                </VBox>
+                            </f:content>
+                        </f:Card>
 
-       <f:Card class="focus_Card" height="260px" width="183px" >
-       <f:content>
-       <VBox class="card">
-       <Image src="https://i.scdn.co/image/ab67706f00000002d6d48b11fd3b11da654c3519" class="image" height="151px" width="151px"></Image>
-       <VBox class="texts">
-       <Text text="Deep Focus" class="mainTittle" />
-       <Text text="keep calm and focus" class="miniTittle" />
-       <Text text="with ambient and pos..." class="miniTittle" />
-       </VBox>
-       </VBox>
-       </f:content>
-       </f:Card>
+                        <f:Card
+                            class="focus_Card"
+                            height="260px"
+                            width="183px"
+                        >
+                            <f:content>
+                                <VBox class="card">
+                                    <core:Icon
+                                        src="sap-icon://up"
+                                        class="play"
+                                        height="45px"
+                                        width="45px"
+                                    />
+                                    <Image
+                                        src="https://i.scdn.co/image/ab67706f00000002fe24d7084be472288cd6ee6c"
+                                        class="image"
+                                        height="151px"
+                                        width="151px"
+                                    />
+                                    <VBox class="texts">
+                                        <Text
+                                            text="Instrumental Study"
+                                            class="mainTittle"
+                                        />
+                                        <Text
+                                            text="Focus with soft study"
+                                            class="miniTittle"
+                                        />
+                                        <Text
+                                            text="music in the..."
+                                            class="miniTittle"
+                                        />
+                                    </VBox>
+                                </VBox>
+                            </f:content>
+                        </f:Card>
 
-       <f:Card class="focus_Card" height="260px" width="183px" >
-       <f:content>
-       <VBox class="card">
-       <Image src="https://i.scdn.co/image/ab67706f00000002fe24d7084be472288cd6ee6c" class="image" height="151px" width="151px"></Image>
-       <VBox class="texts">
-       <Text text="Instrumental Study" class="mainTittle" />
-       <Text text="Focus with soft study" class="miniTittle" />
-       <Text text="music in the..." class="miniTittle" />
-       </VBox>
-       </VBox>
-       </f:content>
-       </f:Card>
+                        <f:Card
+                            class="focus_Card"
+                            height="260px"
+                            width="183px"
+                        >
+                            <f:content>
+                                <VBox class="card">
+                                    <core:Icon
+                                        src="sap-icon://up"
+                                        class="play"
+                                        height="45px"
+                                        width="45px"
+                                    />
+                                    <Image
+                                        src="	https://i.scdn.co/image/ab67706f00000002724554ed6bed6f051d9b0bfc"
+                                        class="image"
+                                        height="151px"
+                                        width="151px"
+                                    />
+                                    <VBox class="texts">
+                                        <Text
+                                            text="Focus Flow"
+                                            class="mainTittle"
+                                        />
+                                        <Text
+                                            text="Uptempo instrumental"
+                                            class="miniTittle"
+                                        />
+                                        <Text
+                                            text="hip hop beats."
+                                            class="miniTittle"
+                                        />
+                                    </VBox>
+                                </VBox>
+                            </f:content>
+                        </f:Card>
 
-       <f:Card class="focus_Card" height="260px" width="183px" >
-       <f:content>
-       <VBox class="card">
-       <Image src="	https://i.scdn.co/image/ab67706f00000002724554ed6bed6f051d9b0bfc" class="image" height="151px" width="151px"></Image>
-       <VBox class="texts">
-       <Text text="Focus Flow" class="mainTittle" />
-       <Text text="Uptempo instrumental" class="miniTittle" />
-       <Text text="hip hop beats." class="miniTittle" />
-       </VBox>
-       </VBox>
-       </f:content>
-       </f:Card>
+                        <f:Card
+                            class="focus_Card"
+                            height="260px"
+                            width="183px"
+                        >
+                            <f:content>
+                                <VBox class="card">
+                                    <core:Icon
+                                        src="sap-icon://up"
+                                        class="play"
+                                        height="45px"
+                                        width="45px"
+                                    />
+                                    <Image
+                                        src="	https://i.scdn.co/image/ab67706f00000002e435ce0a86a8b9dc24527618"
+                                        class="image"
+                                        height="151px"
+                                        width="151px"
+                                    />
+                                    <VBox class="texts">
+                                        <Text
+                                            text="Workday Lounge"
+                                            class="mainTittle"
+                                        />
+                                        <Text
+                                            text="Lounge and chill out"
+                                            class="miniTittle"
+                                        />
+                                        <Text
+                                            text="music for your workday."
+                                            class="miniTittle"
+                                        />
+                                    </VBox>
+                                </VBox>
+                            </f:content>
+                        </f:Card>
 
-       <f:Card class="focus_Card" height="260px" width="183px" >
-       <f:content>
-       <VBox class="card">
-       <Image src="	https://i.scdn.co/image/ab67706f00000002e435ce0a86a8b9dc24527618" class="image" height="151px" width="151px"></Image>
-       <VBox class="texts">
-       <Text text="Workday Lounge" class="mainTittle" />
-       <Text text="Lounge and chill out" class="miniTittle" />
-       <Text text="music for your workday." class="miniTittle" />
-       </VBox>
-       </VBox>
-       </f:content>
-       </f:Card>
+                        <f:Card
+                            class="focus_Card"
+                            height="260px"
+                            width="183px"
+                        >
+                            <f:content>
+                                <VBox class="card">
+                                    <core:Icon
+                                        src="sap-icon://up"
+                                        class="play"
+                                        height="45px"
+                                        width="45px"
+                                    />
+                                    <Image
+                                        src="	https://i.scdn.co/image/ab67706f0000000296e08a91ef3c7a6e7bfaa9a6"
+                                        class="image"
+                                        height="151px"
+                                        width="151px"
+                                    />
+                                    <VBox class="texts">
+                                        <Text
+                                            text="Beats to think to"
+                                            class="mainTittle"
+                                        />
+                                        <Text
+                                            text="Focus with deep techno"
+                                            class="miniTittle"
+                                        />
+                                        <Text
+                                            text="and tech house."
+                                            class="miniTittle"
+                                        />
+                                    </VBox>
+                                </VBox>
+                            </f:content>
+                        </f:Card>
 
-       <f:Card class="focus_Card" height="260px" width="183px" >
-       <f:content>
-       <VBox class="card">
-       <Image src="	https://i.scdn.co/image/ab67706f0000000296e08a91ef3c7a6e7bfaa9a6" class="image" height="151px" width="151px"></Image>
-       <VBox class="texts">
-       <Text text="Beats to think to" class="mainTittle" />
-       <Text text="Focus with deep techno" class="miniTittle" />
-       <Text text="and tech house." class="miniTittle" />
-       </VBox>
-       </VBox>
-       </f:content>
-       </f:Card>
+                        <f:Card
+                            class="focus_Card"
+                            height="260px"
+                            width="183px"
+                        >
+                            <f:content>
+                                <VBox class="card">
+                                    <core:Icon
+                                        src="sap-icon://up"
+                                        class="play"
+                                        height="45px"
+                                        width="45px"
+                                    />
+                                    <Image
+                                        src="https://i.scdn.co/image/ab67706f00000002fee0aa7c6bfc815873e45f9e"
+                                        class="image"
+                                        height="151px"
+                                        width="151px"
+                                    />
+                                    <VBox class="texts">
+                                        <Text
+                                            text="Reading Adventure"
+                                            class="mainTittle"
+                                        />
+                                        <Text
+                                            text="Scores and soundtracks"
+                                            class="miniTittle"
+                                        />
+                                        <Text
+                                            text="for daring quests, epi..."
+                                            class="miniTittle"
+                                        />
+                                    </VBox>
+                                </VBox>
+                            </f:content>
+                        </f:Card>
+                    </HBox>
+                </CustomListItem>
 
-       <f:Card class="focus_Card" height="260px" width="183px" >
-       <f:content>
-       <VBox class="card">
-       <Image src="https://i.scdn.co/image/ab67706f00000002fee0aa7c6bfc815873e45f9e" class="image" height="151px" width="151px"></Image>
-       <VBox class="texts">
-       <Text text="Reading Adventure" class="mainTittle" />
-       <Text text="Scores and soundtracks" class="miniTittle" />
-       <Text text="for daring quests, epi..." class="miniTittle" />
-       </VBox>
-       </VBox>
-       </f:content>
-       </f:Card>
-       </HBox>
-       </CustomListItem>
+                <!-- sounds of india -->
 
-       <!-- sounds of india -->
+                <CustomListItem class="focusBar sounds_of_india">
+                    <Text
+                        text="Sound of India"
+                        class="focus_text"
+                    />
+                    <HBox class="focus">
+                        <f:Card
+                            class="focus_Card"
+                            height="260px"
+                            width="183px"
+                        >
+                            <f:content>
+                                <VBox class="card">
+                                    <core:Icon
+                                        src="sap-icon://up"
+                                        class="play"
+                                        height="45px"
+                                        width="45px"
+                                    />
+                                    <Image
+                                        src="https://i.scdn.co/image/ab67706c0000da8436ea3a15c04a4b0821958ceb"
+                                        class="image"
+                                        height="151px"
+                                        width="151px"
+                                    />
+                                    <VBox class="texts">
+                                        <Text
+                                            text="The Sound of Mu..."
+                                            class="mainTittle"
+                                        />
+                                        <Text
+                                            text="The songs that define,"
+                                            class="miniTittle"
+                                        />
+                                        <Text
+                                            text="unite and distinguish..."
+                                            class="miniTittle"
+                                        />
+                                    </VBox>
+                                </VBox>
+                            </f:content>
+                        </f:Card>
 
-       <CustomListItem class="focusBar sounds_of_india">
-       <Text text="Sound of India" class="focus_text" />
-       <HBox class="focus">
+                        <f:Card
+                            class="focus_Card"
+                            height="260px"
+                            width="183px"
+                        >
+                            <f:content>
+                                <VBox class="card">
+                                    <core:Icon
+                                        src="sap-icon://up"
+                                        class="play"
+                                        height="45px"
+                                        width="45px"
+                                    />
+                                    <Image
+                                        src="https://i.scdn.co/image/ab67706c0000da84ca51e0b1b2526295415ea0f7"
+                                        class="image"
+                                        height="151px"
+                                        width="151px"
+                                    />
+                                    <VBox class="texts">
+                                        <Text
+                                            text="The Sound of Kol..."
+                                            class="mainTittle"
+                                        />
+                                        <Text
+                                            text="The songs that define,"
+                                            class="miniTittle"
+                                        />
+                                        <Text
+                                            text="unite and distinguish..."
+                                            class="miniTittle"
+                                        />
+                                    </VBox>
+                                </VBox>
+                            </f:content>
+                        </f:Card>
 
-       <f:Card class="focus_Card" height="260px" width="183px" >
-       <f:content>
-       <VBox class="card">
-       <Image src="https://i.scdn.co/image/ab67706c0000da8436ea3a15c04a4b0821958ceb" class="image" height="151px" width="151px"></Image>
-       <VBox class="texts">
-       <Text text="The Sound of Mu..." class="mainTittle" />
-       <Text text="The songs that define," class="miniTittle" />
-       <Text text="unite and distinguish..." class="miniTittle" />
-       </VBox>
-       </VBox>
-       </f:content>
-       </f:Card>
+                        <f:Card
+                            class="focus_Card"
+                            height="260px"
+                            width="183px"
+                        >
+                            <f:content>
+                                <VBox class="card">
+                                    <core:Icon
+                                        src="sap-icon://up"
+                                        class="play"
+                                        height="45px"
+                                        width="45px"
+                                    />
+                                    <Image
+                                        src="https://i.scdn.co/image/ab67706c0000da84fdad3548d41af616a7e8d64c"
+                                        class="image"
+                                        height="151px"
+                                        width="151px"
+                                    />
+                                    <VBox class="texts">
+                                        <Text
+                                            text="The Sound of Del..."
+                                            class="mainTittle"
+                                        />
+                                        <Text
+                                            text="The songs that define,"
+                                            class="miniTittle"
+                                        />
+                                        <Text
+                                            text="unite and distinguish..."
+                                            class="miniTittle"
+                                        />
+                                    </VBox>
+                                </VBox>
+                            </f:content>
+                        </f:Card>
 
-       <f:Card class="focus_Card" height="260px" width="183px" >
-       <f:content>
-       <VBox class="card">
-       <Image src="https://i.scdn.co/image/ab67706c0000da84ca51e0b1b2526295415ea0f7" class="image" height="151px" width="151px"></Image>
-       <VBox class="texts">
-       <Text text="The Sound of Kol..." class="mainTittle" />
-      <Text text="The songs that define," class="miniTittle" />
-       <Text text="unite and distinguish..." class="miniTittle" />
-       </VBox>
-       </VBox>
-       </f:content>
-       </f:Card>
+                        <f:Card
+                            class="focus_Card"
+                            height="260px"
+                            width="183px"
+                        >
+                            <f:content>
+                                <VBox class="card">
+                                    <core:Icon
+                                        src="sap-icon://up"
+                                        class="play"
+                                        height="45px"
+                                        width="45px"
+                                    />
+                                    <Image
+                                        src="https://i.scdn.co/image/ab67706c0000da84d8f01d1da427744c3c74172d"
+                                        class="image"
+                                        height="151px"
+                                        width="151px"
+                                    />
+                                    <VBox class="texts">
+                                        <Text
+                                            text="The Sound of Ben..."
+                                            class="mainTittle"
+                                        />
+                                        <Text
+                                            text="The songs that define,"
+                                            class="miniTittle"
+                                        />
+                                        <Text
+                                            text="unite and distinguish..."
+                                            class="miniTittle"
+                                        />
+                                    </VBox>
+                                </VBox>
+                            </f:content>
+                        </f:Card>
 
-       <f:Card class="focus_Card" height="260px" width="183px" >
-       <f:content>
-       <VBox class="card">
-       <Image src="https://i.scdn.co/image/ab67706c0000da84fdad3548d41af616a7e8d64c" class="image" height="151px" width="151px"></Image>
-       <VBox class="texts">
-       <Text text="The Sound of Del..." class="mainTittle" />
-       <Text text="The songs that define," class="miniTittle" />
-       <Text text="unite and distinguish..." class="miniTittle" />
-       </VBox>
-       </VBox>
-       </f:content>
-       </f:Card>
+                        <f:Card
+                            class="focus_Card"
+                            height="260px"
+                            width="183px"
+                        >
+                            <f:content>
+                                <VBox class="card">
+                                    <core:Icon
+                                        src="sap-icon://up"
+                                        class="play"
+                                        height="45px"
+                                        width="45px"
+                                    />
+                                    <Image
+                                        src="https://i.scdn.co/image/ab67706c0000da8487c680fc5e5805eaef5d4dd2"
+                                        class="image"
+                                        height="151px"
+                                        width="151px"
+                                    />
+                                    <VBox class="texts">
+                                        <Text
+                                            text="The Sound of Che..."
+                                            class="mainTittle"
+                                        />
+                                        <Text
+                                            text="The songs that define,"
+                                            class="miniTittle"
+                                        />
+                                        <Text
+                                            text="unite and distinguish..."
+                                            class="miniTittle"
+                                        />
+                                    </VBox>
+                                </VBox>
+                            </f:content>
+                        </f:Card>
 
-       <f:Card class="focus_Card" height="260px" width="183px" >
-       <f:content>
-       <VBox class="card">
-       <Image src="https://i.scdn.co/image/ab67706c0000da84d8f01d1da427744c3c74172d" class="image" height="151px" width="151px"></Image>
-       <VBox class="texts">
-       <Text text="The Sound of Ben..." class="mainTittle" />
-       <Text text="The songs that define," class="miniTittle" />
-       <Text text="unite and distinguish..." class="miniTittle" />
-       </VBox>
-       </VBox>
-       </f:content>
-       </f:Card>
-
-       <f:Card class="focus_Card" height="260px" width="183px" >
-       <f:content>
-       <VBox class="card">
-       <Image src="https://i.scdn.co/image/ab67706c0000da8487c680fc5e5805eaef5d4dd2" class="image" height="151px" width="151px"></Image>
-       <VBox class="texts">
-       <Text text="The Sound of Che..." class="mainTittle" />
-       <Text text="The songs that define," class="miniTittle" />
-       <Text text="unite and distinguish..." class="miniTittle" />
-       </VBox>
-       </VBox>
-       </f:content>
-       </f:Card>
-
-       <f:Card class="focus_Card" height="260px" width="183px" >
-       <f:content>
-       <VBox class="card">
-       <Image src="	https://i.scdn.co/image/ab67706c0000da84f3b38c327eb3412669e58d96" class="image" height="151px" width="151px"></Image>
-       <VBox class="texts">
-       <Text text="The Sound of Hyd..." class="mainTittle" />
-       <Text text="The songs that define," class="miniTittle" />
-       <Text text="unite and distinguish..." class="miniTittle" />
-       </VBox>
-       </VBox>
-       </f:content>
-       </f:Card>
-       </HBox>
-       </CustomListItem>
-
-       </List>
-       </content>
+                        <f:Card
+                            class="focus_Card"
+                            height="260px"
+                            width="183px"
+                        >
+                            <f:content>
+                                <VBox class="card">
+                                    <core:Icon
+                                        src="sap-icon://up"
+                                        class="play"
+                                        height="45px"
+                                        width="45px"
+                                    />
+                                    <Image
+                                        src="	https://i.scdn.co/image/ab67706c0000da84f3b38c327eb3412669e58d96"
+                                        class="image"
+                                        height="151px"
+                                        width="151px"
+                                    />
+                                    <VBox class="texts">
+                                        <Text
+                                            text="The Sound of Hyd..."
+                                            class="mainTittle"
+                                        />
+                                        <Text
+                                            text="The songs that define,"
+                                            class="miniTittle"
+                                        />
+                                        <Text
+                                            text="unite and distinguish..."
+                                            class="miniTittle"
+                                        />
+                                    </VBox>
+                                </VBox>
+                            </f:content>
+                        </f:Card>
+                    </HBox>
+                </CustomListItem>
+            </List>
+        </content>
     </Page>
 </mvc:View>
