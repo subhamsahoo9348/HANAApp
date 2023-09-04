@@ -27,6 +27,9 @@ sap.ui.define([
                 that.byId("text2").removeStyleClass("text2AtSearch");
                 that.byId("text").addStyleClass("text");
                 that.byId("text2").addStyleClass("text2");
-            }
+            },
+            onPressLogIn:function(){
+                that.getOwnerComponent().getRouter().navTo("Login");
+            },
         });
     });

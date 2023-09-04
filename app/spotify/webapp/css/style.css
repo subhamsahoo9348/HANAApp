@@ -340,7 +340,8 @@
     background-color: rgb(50, 48, 48);
     border: none;
 }
-.mainList .mainText{
+
+.mainList .mainText {
     margin-left: 35px;
 }
 
@@ -419,28 +420,142 @@
 .mainList .types .allTypesList .Rows .firstRow .bollywood {
     background-color: rgb(180, 155, 200);
 }
+
 .mainList .types .allTypesList .Rows .firstRow .punjabi {
     background-color: rgb(240, 55, 165);
 }
+
 .mainList .types .allTypesList .Rows .firstRow .tamil {
     background-color: rgb(156, 240, 225);
 }
+
 .mainList .types .allTypesList .Rows .firstRow .telugu {
     background-color: rgb(215, 242, 125);
 }
+
 .mainList .types .allTypesList .Rows .firstRow .radar {
     background-color: rgb(115, 88, 255);
 }
+
 .mainList .types .allTypesList .Rows .firstRow .equal {
     background-color: rgb(20, 138, 8);
 }
+
 .mainList .types .allTypesList .Rows .firstRow .gaming {
     background-color: rgb(232, 17, 91);
 }
+
 .mainList .types .allTypesList .Rows .firstRow .indie {
     background-color: rgb(141, 103, 171);
 }
 
-.spacer{
+.spacer {
     background-color: rgb(50, 48, 48);
+}
+
+
+/* LogIn Page */
+
+.logInBody {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.logInBody .mainHeader {
+    background-color: rgba(0, 0, 0, 0.9) !important;
+    border: none;
+}
+
+.logInBody .mainHeader .spotifyImage {
+
+    display: inline-block;
+}
+
+.logInBody .mainHeader .spotifyText {
+
+    display: inline-block;
+    color: white;
+    font-size: larger;
+    font-weight: 400;
+    font-family: var(--font-family, CircularSp, CircularSp-Arab, CircularSp-Hebr, CircularSp-Cyrl, CircularSp-Grek, CircularSp-Deva, var(--fallback-fonts, sans-serif)), Helvetica, Arial, sans-serif;
+}
+
+.logInBody .card {
+    background-color: rgba(0, 0, 0, 0.9);
+    left: 30%;
+    top: 10%;
+}
+
+/* .logInBody .card .cardContent{
+
+} */
+.logInBody .card .cardContent .mainText {
+    height: 18%;
+    width: 100%;
+    color: white;
+    font-size: 42px;
+    font-weight: bold;
+    margin-top: 48px;
+    margin-bottom: 48px;
+    margin-left: 170px;
+    font-family: var(--font-family, CircularSp, CircularSp-Arab, CircularSp-Hebr, CircularSp-Cyrl, CircularSp-Grek, CircularSp-Deva, var(--fallback-fonts, sans-serif)), Helvetica, Arial, sans-serif;
+}
+
+
+.logInBody .card .cardContent .links .linkItem {
+    margin-top: 10px;
+    display: inline-block;
+    background-color: rgba(0, 0, 0, 0.9);
+    border-radius: 30px;
+    margin-left: 22%;
+    height: 48px;
+    width: 324px;
+    border: 1px solid rgb(113, 112, 112);
+}
+
+.logInBody .card .cardContent .links .linkItem .linkBox>* {
+    display: inline-block;
+}
+
+.logInBody .card .cardContent .links .linkItem .linkBox .text {
+    color: white;
+    font-size: 17px;
+    margin-top: 13px;
+    margin-left: 40px;
+}
+
+.logInBody .card .cardContent .links .linkItem .linkBox .phoneNumber {
+    margin-left: 20px;
+}
+
+.logInBody .card .cardContent .links .linkItem .linkBox .icon {
+    margin-top: 9px;
+    margin-left: 20px;
+}
+
+.logInBody .card .cardContent .form {
+    margin-left: 23%;
+    margin-top: 3%;
+}
+
+.logInBody .card .cardContent .form div {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+
+.logInBody .card .cardContent .form .formContent .box {
+    margin-top: 4%;
+    height: 100%;
+}
+
+.logInBody .card .cardContent .form .formContent .box input {
+    width: 100%;
+    height: 100%;
+}
+
+.logInBody .card .cardContent .form .formContent .box .text {
+    margin-top: 5px;
+}
+
+.logInBody .card .cardContent .form .formContent .box .logInButton {
+    width: 100%;
 }

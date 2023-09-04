@@ -111,6 +111,13 @@
           "target": [
             "TargetView2"
           ]
+        },
+        {
+          "name": "Login",
+          "pattern": "login",
+          "target": [
+            "TargetLogIn"
+          ]
         }
       ],
       "targets": {
@@ -127,6 +134,13 @@
           "clearControlAggregation": false,
           "viewId": "View2",
           "viewName": "View2"
+        },
+        "TargetLogIn": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Login",
+          "viewName": "Login"
         }
       }
     },

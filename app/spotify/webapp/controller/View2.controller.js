@@ -14,9 +14,11 @@ sap.ui.define([
                 this._oRouter = sap.ui.core.UIComponent.getRouterFor(this);
                 this._oRouter.attachRouteMatched(this.onSearch, this);
             },
+            
             onPressHome:function(){
                 that.getOwnerComponent().getRouter().navTo("RouteView1");
             },
+
             onSearch:function(){
                 that.byId("homeIcon").removeStyleClass("homeIcon");
                 that.byId("searchIcon").removeStyleClass("searchIcon");
@@ -27,6 +29,10 @@ sap.ui.define([
                 that.byId("text2").removeStyleClass("text2");
                 that.byId("text").addStyleClass("textAtSearch");
                 that.byId("text2").addStyleClass("text2AtSearch");
-            }
+            },
+
+            onPressLogIn:function(){
+                that.getOwnerComponent().getRouter().navTo("Login");
+            },
         });
     });

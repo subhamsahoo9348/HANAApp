@@ -1,0 +1,76 @@
+<mvc:View xmlns:macros="sap.fe.macros" xmlns:form="sap.ui.layout.form" xmlns:launchpad="sap.ushell.ui.launchpad"
+    xmlns:calendar="sap.ui.unified.calendar"
+    xmlns:cards="sap.f.cards"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.f"
+    controllerName="spotify.controller.Login"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+>
+<Page showHeader="false" class="logInBody">
+<subHeader >
+<OverflowToolbar class="mainHeader" height="6.5rem"  > 
+<!-- <Button text="Spotify" icon="https://www.iconfinder.com/icons/7693323/spotify_social%20media_logo_icon"></Button> -->
+<Image press="onPressSpotify" src="https://cdn2.iconfinder.com/data/icons/social-micon/512/spotify-64.png" alt="error" class="spotifyImage"></Image>
+<Text text="Spotify" class="spotifyText"></Text>
+</OverflowToolbar>
+</subHeader>
+<content>
+<f:Card class="card" height="95%" width="40%" id="card">
+    <f:content>
+    <VBox class="cardContent" height="100%" width="100%" >
+    <Text text="Log in to Spotify" class="mainText"></Text>
+    <List class="links" width="100%" >
+    <CustomListItem class="linkItem" type="Active" press=".openGoogle" >
+    <HBox class="linkBox">
+    <Image class="icon" src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-64.png" height="28px" width="28px"></Image>
+    <Text class="text" text="Continue with Google"></Text>
+    </HBox>
+    </CustomListItem>
+    <CustomListItem class="linkItem" type="Active" press=".openGoogle" >
+    <HBox class="linkBox">
+    <Image class="icon" src="https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Facebook_colored_svg_copy-64.png" height="28px" width="28px"></Image>
+    <Text class="text" text="Continue with Facebook"></Text>
+    </HBox>
+    </CustomListItem>
+    <CustomListItem class="linkItem" type="Active" press=".openGoogle" >
+    <HBox class="linkBox">
+    <Image class="icon" src="https://cdn0.iconfinder.com/data/icons/brands-flat-2/201/apple-social-network-brand-logo-64.png" height="28px" width="28px"></Image>
+    <Text class="text" text="Continue with Apple"></Text>
+    </HBox>
+    </CustomListItem>
+    <CustomListItem class="linkItem" type="Active" press=".openGoogle" >
+    <HBox class="linkBox">
+    <Image class="icon" src="" height="28px" width="28px"></Image>
+    <Text class="text phoneNumber"  text="Continue with phone number"></Text>
+    </HBox>
+    </CustomListItem>
+    </List>
+    <form:SimpleForm class="form" width="324px" >
+    <form:content >
+    <VBox class="formContent" >
+      <VBox class="box" >
+         <Label text="Email or username" labelFor="user" class="userLabel"/>
+         <Input name="user" type="Text" placeholder="Email or username" class="userInput" ></Input>
+    </VBox>
+    <VBox class="box" >
+       <Label text="Password" labelFor="password" class="passwordLabel"/>
+       <Input name="password" type="Password" placeholder="Password" showValueHelp="true" valueHelpIconSrc="sap-icon://hide" class="passwordInput" ></Input>
+    </VBox>
+    <HBox class="box">
+    <Switch name="reMe" type="AcceptReject" state="true"></Switch>
+    <Label text="Remember me" labelFor="reMe" class="text"></Label>
+    </HBox>
+    <VBox class="box">
+     <Button text="Log In" class="logInButton"></Button>
+    </VBox>
+    </VBox>
+    </form:content>
+    </form:SimpleForm>
+    </VBox>
+    </f:content>
+</f:Card>
+</content>
+</Page>
+</mvc:View>

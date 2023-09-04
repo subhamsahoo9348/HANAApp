@@ -172,6 +172,7 @@
                         <Button
                             text="Log in"
                             class="Log_in"
+                            press="onPressLogIn"
                         />
                     </HBox>
                 </CustomListItem>
