@@ -457,11 +457,11 @@
 /* LogIn Page */
 
 .logInBody {
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: #111111;
 }
 
 .logInBody .mainHeader {
-    background-color: rgba(0, 0, 0, 0.9) !important;
+    background-color: rgba(0, 0, 0, 0.8) !important;
     border: none;
 }
 
@@ -519,6 +519,7 @@
 .logInBody .card .cardContent .links .linkItem .linkBox .text {
     color: white;
     font-size: 17px;
+    font-weight: bold;
     margin-top: 13px;
     margin-left: 40px;
 }
@@ -533,14 +534,20 @@
 }
 
 .logInBody .card .cardContent .form {
-    margin-left: 23%;
+    margin-left: 13%;
     margin-top: 3%;
+    border: 1px solid rgb(140, 138, 138);
+    border-left: none;
+    border-right: none;
+}
+
+.logInBody .card .cardContent .form>div {
+    margin-top: 1%;
 }
 
 .logInBody .card .cardContent .form div {
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: black;
 }
-
 
 .logInBody .card .cardContent .form .formContent .box {
     margin-top: 4%;
@@ -548,8 +555,32 @@
 }
 
 .logInBody .card .cardContent .form .formContent .box input {
-    width: 100%;
-    height: 100%;
+    background-color: rgba(38, 37, 37, 0.9);
+}
+
+.logInBody .card .cardContent .form .formContent .box .input>div span {
+    color: rgb(113, 112, 112);
+    font-size: large;
+    top: 18%;
+}
+
+.logInBody .card .cardContent .form .formContent .box .passwordInput input+div {
+    background-color: rgba(38, 37, 37, 0.9);
+}
+
+.logInBody .card .cardContent .form .formContent .box .box input::placeholder {
+    font-size: large;
+}
+
+.logInBody .card .cardContent .form .formContent .box .input>div {
+    width: 324px;
+    height: 48px;
+    border: 1px solid rgb(140, 138, 138);
+}
+
+.logInBody .card .cardContent .form .formContent .box .input {
+    width: 324px;
+    height: 48px;
 }
 
 .logInBody .card .cardContent .form .formContent .box .text {
@@ -558,4 +589,63 @@
 
 .logInBody .card .cardContent .form .formContent .box .logInButton {
     width: 100%;
+}
+
+.logInBody .card .cardContent .form .formContent .box .label,
+.logInBody .card .cardContent .form .switchBox .text {
+    color: white;
+}
+
+.logInBody .card .cardContent .form .user,
+.logInBody .card .cardContent .form .password,
+.logInBody .card .cardContent .form .switchBox,
+.logInBody .card .cardContent .form .box .logInButton {
+    margin-left: 12%;
+}
+
+.logInBody .card .cardContent .form .box .input {
+    top: 6px;
+}
+
+.logInBody .card .cardContent .form .switchBox {
+    width: 324px;
+}
+
+.logInBody .card .cardContent .form .box .logInButton span {
+    background-color: #1ED760;
+    border: none;
+    color: black;
+}
+
+.logInBody .card .cardContent .form .box .logInButton {
+    height: 48px;
+    padding: 8px 32px;
+    background-color: #1ED760;
+    border-radius: 30px;
+}
+
+.logInBody .card .cardContent .form .box .linkText {
+    font-size: medium;
+    margin-left: 30%;
+    color: white;
+    text-decoration: underline;
+}
+
+.logInBody .card .cardContent .fotter {
+    top: 30px;
+    margin-left: 200px;
+}
+
+.logInBody .card .cardContent .fotter .text {
+    color: rgb(113, 112, 112);
+    font-size: medium;
+    font-weight: lighter;
+}
+
+.logInBody .card .cardContent .fotter .link {
+    text-decoration: underline;
+    color: white;
+    margin-left: 5px;
+    font-size: medium;
+    font-weight: lighter;
 }

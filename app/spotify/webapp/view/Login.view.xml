@@ -3,6 +3,7 @@
     xmlns:cards="sap.f.cards"
     xmlns:core="sap.ui.core"
     xmlns:f="sap.f"
+    xmlns:s="sap.ui.webc.main"
     controllerName="spotify.controller.Login"
     xmlns:mvc="sap.ui.core.mvc"
     displayBlock="true"
@@ -47,27 +48,34 @@
     </HBox>
     </CustomListItem>
     </List>
-    <form:SimpleForm class="form" width="324px" >
+    <form:SimpleForm class="form" width="65%" >
     <form:content >
     <VBox class="formContent" >
-      <VBox class="box" >
-         <Label text="Email or username" labelFor="user" class="userLabel"/>
-         <Input name="user" type="Text" placeholder="Email or username" class="userInput" ></Input>
+      <VBox class="box user" >
+         <Label text="Email or username" labelFor="user" class="userLabel label"/>
+         <Input name="user" type="Text" placeholder="Email or username" class="userInput input" width="324px"></Input>
     </VBox>
-    <VBox class="box" >
-       <Label text="Password" labelFor="password" class="passwordLabel"/>
-       <Input name="password" type="Password" placeholder="Password" showValueHelp="true" valueHelpIconSrc="sap-icon://hide" class="passwordInput" ></Input>
+    <VBox class="box password" >
+       <Label text="Password" labelFor="password" class="passwordLabel label"/>
+       <Input name="password" type="Password" placeholder="Password" showValueHelp="true" width="324px" valueHelpIconSrc="sap-icon://hide" class="passwordInput input" ></Input>
     </VBox>
-    <HBox class="box">
-    <Switch name="reMe" type="AcceptReject" state="true"></Switch>
+    <HBox class="box switchBox">
+    <s:Switch checked="true"></s:Switch>
     <Label text="Remember me" labelFor="reMe" class="text"></Label>
     </HBox>
     <VBox class="box">
-     <Button text="Log In" class="logInButton"></Button>
+     <Button text="Log In" class="logInButton" width="324px"></Button>
+    </VBox>
+    <VBox class="box">
+     <Text text="Forget your password?" class="linkText" ></Text>
     </VBox>
     </VBox>
     </form:content>
     </form:SimpleForm>
+    <HBox class="fotter">
+    <Text text="Don't have an account?" class="text"></Text>
+    <Text text="Sign up for Spotify" class="link"></Text>
+    </HBox>
     </VBox>
     </f:content>
 </f:Card>
