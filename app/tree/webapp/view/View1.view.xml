@@ -1,17 +1,19 @@
-<mvc:View controllerName="tree.controller.View1"
+<mvc:View xmlns:core="sap.ui.core" controllerName="tree.controller.View1"
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
     xmlns:dnd="sap.ui.core.dnd"
     xmlns="sap.m">
     <Page id="page" title="{i18n>title}">
         <content>
-        <Tree id="tree" items="{path: '/data'}" width="100%" mode="MultiSelect">
+        <SplitContainer>
+		<masterPages>
+       <Tree id="tree" items="{path: '/data'}" width="100%" mode="MultiSelect" itemPress="onPress" class="tree">
         <headerToolbar>
-        <OverflowToolbar >
-        <Bar >
+        <OverflowToolbar  >
+        <Bar class="bar" >
        <contentLeft>
-       <Button icon="sap-icon://add" press="onPressAdd"></Button>
-       <Button icon="sap-icon://edit" press="onPressEdit"></Button>
-       <Button icon="sap-icon://delete" press="onPressDelete"></Button>
+       <Button icon="sap-icon://add" press="onPressAdd" class="add"></Button>
+       <Button icon="sap-icon://edit" press="onPressEdit" class="update"></Button>
+       <Button icon="sap-icon://delete" press="onPressDelete" class="delete"></Button>
        </contentLeft>
         </Bar>
         </OverflowToolbar>
@@ -23,8 +25,13 @@
 							dragStart="onDragStart"
 							drop="onDrop"/>
 		</dragDropConfig>
-			<StandardTreeItem title="{DESCRIPTION}" type="Active" />
+			<StandardTreeItem title="{DESCRIPTION}" type="Active"/>
 		</Tree>
+		</masterPages>
+        <detailPages>
+        <core:HTML content="{/content}" id="html"></core:HTML>
+         </detailPages>
+        </SplitContainer>
         </content>
     </Page>
 </mvc:View>

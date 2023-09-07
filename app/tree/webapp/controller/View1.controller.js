@@ -266,5 +266,29 @@ sap.ui.define([
                     }
                 })
             },
+
+            onPress:function(oEvent){
+                const object = oEvent.getParameter("listItem").getBindingContext().getObject();
+                const oModel = that.getOwnerComponent().getModel();
+                oModel.callFunction("/tree", {
+                    method: "GET",
+                    urlParameters: {
+                        FLAG: "readcontent",
+                        OBJ: null
+                    },
+                    success: function (res) {
+                        const data = JSON.parse(res.tree);
+                        const contentObject = data.find(obj=>obj.PAGEID === object.PAGEID);
+                        if(contentObject){
+                            that.byId("html").setModel(new sap.ui.model.json.JSONModel({
+                                content:contentObject.CONTENT
+                            }))
+                        }
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                })
+            }
         });
     });

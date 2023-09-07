@@ -255,6 +255,17 @@ module.exports = (srv) => {
         throw e;
       }
     }
+
+    if (req.data.FLAG === "readcontent") {
+      try {
+        const fs = require('fs');
+        const data = require("../db/data.json");
+        return JSON.stringify(data);
+      } catch (e) {
+        console.log(e)
+        throw e;
+      }
+    }
   });
 
 };
