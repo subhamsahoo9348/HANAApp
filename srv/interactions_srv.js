@@ -1,4 +1,5 @@
 const cds = require("@sap/cds");
+const { count } = require("console");
 module.exports = (srv) => {
   srv.on("crud", async (req) => {
     if (req.data.FLAG === "C") {
@@ -166,6 +167,91 @@ module.exports = (srv) => {
         }
         return JSON.stringify(returnsData);
       } catch (e) {
+        throw e;
+      }
+    }
+  });
+  srv.on("tree", async (req) => {
+    if (req.data.FLAG === "read") {
+      try {
+        const data = require("../db/header.json");
+        return JSON.stringify(data);
+      } catch (e) {
+        console.log(e)
+        throw e;
+      }
+    }
+    if (req.data.FLAG === "drop") {
+      try {
+        const fs = require('fs');
+        const data = require("../db/header.json");
+        let count = 1;
+        data.forEach((obj, index) => { data[index].index = count++ });
+        const dragObjectId = JSON.parse(req.data.OBJ).dragObject.PAGEID;
+        const dropObjectId = JSON.parse(req.data.OBJ).dropObject.PAGEID;
+        const dragObject = data.find(obj => obj.PAGEID === dragObjectId);
+        const dropObject = data.find(obj => obj.PAGEID === dropObjectId);
+        const dragObjectIndex = data.findIndex(obj => obj.PAGEID === dragObjectId);
+        const dropObjectIndex = data.findIndex(obj => obj.PAGEID === dropObjectId);
+        data[dragObjectIndex].index = dropObject.index;
+        data[dragObjectIndex].PARENTNODEID = dropObject.PARENTNODEID;
+        data[dropObjectIndex].index = Number(dropObject.index) + 1;
+        data.sort((a, b) => a.index - b.index);
+        let indexs = Number(dropObject.index) + 1;
+        const tempIndex = indexs;
+        data.forEach((obj, index) => {
+          if (index >= tempIndex) {
+            data[index].index = indexs++;
+          }
+        })
+        data.sort((a, b) => a.index - b.index);
+        fs.writeFileSync('./db/header.json', JSON.stringify(data));
+        //return JSON.stringify(data)
+      } catch (e) {
+        console.log(e)
+        throw e;
+      }
+    }
+
+    if (req.data.FLAG === "C") {
+      try {
+        const fs = require('fs');
+        const data = require("../db/header.json");
+        const OBJ = JSON.parse(req.data.OBJ);
+        data.push(OBJ);
+        fs.writeFileSync('./db/header.json', JSON.stringify(data));
+      } catch (e) {
+        console.log(e)
+        throw e;
+      }
+    }
+    if (req.data.FLAG === "U") {
+      try {
+        const fs = require('fs');
+        const data = require("../db/header.json");
+        const OBJ = JSON.parse(req.data.OBJ);
+        const index = data.findIndex(obj => obj.PAGEID === OBJ.PAGEID);
+        data[index] = OBJ;
+        fs.writeFileSync('./db/header.json', JSON.stringify(data));
+      } catch (e) {
+        console.log(e)
+        throw e;
+      }
+    }
+    if (req.data.FLAG === "D") {
+      try {
+        const fs = require('fs');
+        const data = require("../db/header.json");
+        const deleteIds = JSON.parse(req.data.OBJ).deleteIds;
+        const updateData = data.filter(obj => !deleteIds.includes(obj.PAGEID))
+        updateData.forEach((obj,index)=>{
+          if(deleteIds.includes(obj.PARENTNODEID)){
+            updateData[index].PARENTNODEID = 0;
+          }
+        })
+        fs.writeFileSync('./db/header.json', JSON.stringify(updateData));
+      } catch (e) {
+        console.log(e)
         throw e;
       }
     }

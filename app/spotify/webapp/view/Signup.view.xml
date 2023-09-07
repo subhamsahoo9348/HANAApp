@@ -1,0 +1,34 @@
+<mvc:View xmlns:f="sap.f" controllerName="spotify.controller.Signup" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+    <Page id="page" showHeader="false" class="signupBody">
+    <f:Card class="mainCard" width="30%">
+    <f:content>
+    <List class="list">
+    <ColumnListItem class="logoText">
+    <HBox class="logotext">
+    <Image src="https://cdn2.iconfinder.com/data/icons/social-micon/512/spotify-64.png" class="image"></Image>
+    <Text text="Spotify" class="text"></Text>
+    </HBox>
+    </ColumnListItem>
+    <!-- <CustomListItem class="mainText">
+    <Text text="Sign up for free to start listening." class="text"></Text>
+    </CustomListItem>
+    <CustomListItem class="linkItem" type="Active" press=".openFaceBook">
+    <HBox class="linkBox">
+    <Image class="icon" src="https://cdn3.iconfinder.com/data/icons/free-social-icons/67/facebook_circle_color-64.png" height="28px" width="28px"></Image>
+    <Text class="text" text="Sign up with Facebook"></Text>
+    </HBox>
+    </CustomListItem>
+    <CustomListItem class="linkItem" type="Active" press=".openGoogle">
+    <HBox class="linkBox">
+    <Image class="icon" src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-64.png" height="28px" width="28px"></Image>
+    <Text class="text" text="Sign up with Google"></Text>
+    </HBox>
+    </CustomListItem>
+    <CustomListItem class="or">
+    <ToolbarSeparator class="bar1"></ToolbarSeparator><Text text="or" class="text"></Text><ToolbarSeparator class="bar2"></ToolbarSeparator>
+    </CustomListItem> -->
+    </List>
+    </f:content>
+    </f:Card>
+    </Page>
+</mvc:View>

@@ -649,3 +649,11 @@
     font-size: medium;
     font-weight: lighter;
 }
+
+/* Sign_up page */
+
+.signupBody .mainCard{
+    /* border: 2px solid red; */
+    top: 5%;
+    left: 33%;
+}

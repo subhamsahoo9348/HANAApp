@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+        <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="CatalogService" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <EntityContainer Name="EntityContainer">
+                <EntitySet Name="UNIQUE_ID_HEADER" EntityType="CatalogService.UNIQUE_ID_HEADER"/>
+                <EntitySet Name="UNIQUE_ID_ITEM" EntityType="CatalogService.UNIQUE_ID_ITEM"/>
+                <EntitySet Name="CHARVAL_NUM" EntityType="CatalogService.CHARVAL_NUM"/>
+                <EntitySet Name="SEED_ORDER" EntityType="CatalogService.SEED_ORDER"/>
+                <FunctionImport Name="crud" Function="CatalogService.crud"/>
+                <FunctionImport Name="order" Function="CatalogService.order"/>
+                <FunctionImport Name="excelorder" Function="CatalogService.excelorder"/>
+            </EntityContainer>
+            <EntityType Name="UNIQUE_ID_HEADER">
+                <Property Name="UNIQUE_ID" Type="Edm.Int32"/>
+                <Property Name="PRODUCT_ID" Type="Edm.String"/>
+                <Property Name="UNIQUE_DESC" Type="Edm.String"/>
+                <Property Name="UID_TYPE" Type="Edm.String"/>
+                <Property Name="ACTIVE" Type="Edm.Boolean"/>
+            </EntityType>
+            <EntityType Name="UNIQUE_ID_ITEM">
+                <Property Name="UNIQUE_ID" Type="Edm.Int32"/>
+                <Property Name="PRODUCT" Type="Edm.String"/>
+                <Property Name="CHAR_NUM" Type="Edm.String"/>
+                <Property Name="CHAR_NUM_VAL" Type="Edm.String"/>
+                <Property Name="CHAR_VALNUMDESC" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="CHARVAL_NUM">
+                <Property Name="CHAR_NUM" Type="Edm.String"/>
+                <Property Name="CHAR_NUM_VAL" Type="Edm.String"/>
+                <Property Name="CHARVAL_NUM" Type="Edm.String"/>
+                <Property Name="CHAR_VALNUMDESC" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="SEED_ORDER">
+                <Key>
+                    <PropertyRef Name="SEEDORDER"/>
+                </Key>
+                <Property Name="SEEDORDER" Type="Edm.String" Nullable="false"/>
+                <Property Name="PRODUCT" Type="Edm.String"/>
+                <Property Name="UNIQUE_ID" Type="Edm.String"/>
+                <Property Name="ORDER_QUANTITY" Type="Edm.Int32"/>
+                <Property Name="MATERIAL_AVAIL_DATE" Type="Edm.String"/>
+                <Property Name="CREADTED_DATE" Type="Edm.String"/>
+                <Property Name="CREATED_BY" Type="Edm.String"/>
+            </EntityType>
+            <Function Name="crud" IsBound="false" IsComposable="false">
+                <Parameter Name="FLAG" Type="Edm.String"/>
+                <Parameter Name="PRODUCT_ID" Type="Edm.String"/>
+                <Parameter Name="UNIQUE_DESC" Type="Edm.String"/>
+                <Parameter Name="UID_TYPE" Type="Edm.String"/>
+                <Parameter Name="ACTIVE" Type="Edm.Boolean"/>
+                <Parameter Name="VALUE" Type="Edm.String"/>
+                <Parameter Name="UNIQUE_ID" Type="Edm.String"/>
+                <ReturnType Type="Edm.String"/>
+            </Function>
+            <Function Name="order" IsBound="false" IsComposable="false">
+                <Parameter Name="FLAG" Type="Edm.String"/>
+                <Parameter Name="PRODUCT" Type="Edm.String"/>
+                <Parameter Name="UNIQUE_ID" Type="Edm.String"/>
+                <Parameter Name="ORDER_QUANTITY" Type="Edm.Int32"/>
+                <Parameter Name="MATERIAL_AVAIL_DATE" Type="Edm.String"/>
+                <Parameter Name="CREADTED_DATE" Type="Edm.String"/>
+                <Parameter Name="CREATED_BY" Type="Edm.String"/>
+                <ReturnType Type="Edm.String"/>
+            </Function>
+            <Function Name="excelorder" IsBound="false" IsComposable="false">
+                <Parameter Name="FLAG" Type="Edm.String"/>
+                <Parameter Name="OBJ" Type="Edm.String"/>
+                <ReturnType Type="Edm.String"/>
+            </Function>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

@@ -1,0 +1,65 @@
+<core:FragmentDefinition
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <Dialog
+        id="createDialog"
+        title="CREATE NODES"
+        titleAlignment="Center"
+        contentWidth="30%"
+    >
+        <content>
+            <form:SimpleForm layout="ResponsiveGridLayout">
+                <form:content>
+                    <Label
+                        text="PAGE_ID"
+                        design="Bold"
+                    />
+                    <Input
+                        type="Text"
+                        id="pageid"
+                        enabled="false"
+                        required="true"
+                    />
+                    <Label
+                        text="DESCRIPTION"
+                        design="Bold"
+                    />
+                    <Input
+                        id="desc"
+                        required="true"
+                    />
+                    <Label
+                        text="PARENT_NODE_ID"
+                        required="true"
+                        design="Bold"
+                    />
+                    <Input
+                        type="Text"
+                        id="parentNodeId"
+                        required="true"
+                        enabled="false"
+                    />
+                </form:content>
+            </form:SimpleForm>
+        </content>
+        <beginButton>
+            <Button
+            id="addButton"
+                tooltip="add"
+                text="ADD"
+                type="Accept"
+                press="onAdd"
+            />
+        </beginButton>
+        <endButton>
+            <Button
+                tooltip="Cancel"
+                text="CANCEL"
+                type="Reject"
+                press=".onCloseCreate"
+            />
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

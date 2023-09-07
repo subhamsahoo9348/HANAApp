@@ -42,7 +42,7 @@
     </HBox>
     </CustomListItem>
     <CustomListItem class="linkItem" type="Active" press=".openGoogle" >
-    <HBox class="linkBox">
+    <HBox class="linkBox" >
     <Image class="icon" src="" height="28px" width="28px"></Image>
     <Text class="text phoneNumber"  text="Continue with phone number"></Text>
     </HBox>
@@ -74,7 +74,8 @@
     </form:SimpleForm>
     <HBox class="fotter">
     <Text text="Don't have an account?" class="text"></Text>
-    <Text text="Sign up for Spotify" class="link"></Text>
+    <Link  text="Sign up for Spotify" press=".onPressSignUP" class="link">
+    </Link>
     </HBox>
     </VBox>
     </f:content>

@@ -75,6 +75,10 @@ modules:
       - spotify.zip
       name: spotify
       target-path: resources/
+    - artifacts:
+      - tree.zip
+      name: tree
+      target-path: resources/
 - name: salesorder
   type: html5
   path: app/salesorder
@@ -118,6 +122,16 @@ modules:
 - name: spotify
   type: html5
   path: app/spotify
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: tree
+  type: html5
+  path: app/tree
   build-parameters:
     build-result: dist
     builder: custom

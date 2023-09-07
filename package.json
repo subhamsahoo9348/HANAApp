@@ -22,7 +22,8 @@
         "watch-headeritem": "cds watch --open headeritem/webapp/index.html?sap-ui-xx-viewCache=false",
         "watch-project1": "cds watch --open project1/webapp/index.html?sap-ui-xx-viewCache=false",
         "watch-dragand": "cds watch --open dragand/webapp/index.html?sap-ui-xx-viewCache=false",
-        "watch-spotify": "cds watch --open spotify/webapp/index.html?sap-ui-xx-viewCache=false"
+        "watch-spotify": "cds watch --open spotify/webapp/index.html?sap-ui-xx-viewCache=false",
+        "watch-tree": "cds watch --open tree/webapp/index.html?sap-ui-xx-viewCache=false"
     },
     "cds": {
         "build": {
@@ -44,7 +45,7 @@
         }
     },
     "devDependencies": {
-        "@sap/ux-specification": "^1.108.12",
+        "@sap/ux-specification": "^1.108.13",
         "rimraf": "^3.0.2"
     }
 }

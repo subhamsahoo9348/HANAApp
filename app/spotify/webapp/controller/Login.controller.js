@@ -5,7 +5,7 @@ sap.ui.define([
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller,mobileLibrary) {
+    function (Controller, mobileLibrary) {
         "use strict";
 
         let that;
@@ -17,15 +17,20 @@ sap.ui.define([
             },
 
             onLogin: function () {
+                document.title = "Login - Spotify"
             },
 
-            onPressSpotify:function(){
+            onPressSpotify: function () {
                 that.getOwnerComponent().getRouter().navTo("RouteView1");
             },
-            
-            openGoogle:function(){
+
+            openGoogle: function () {
                 const URLhelper = mobileLibrary.URLHelper;
                 URLhelper.redirect("https://www.google.co.in/", true);
-            }
+            },
+
+            onPressSignUP: function () {
+                that.getOwnerComponent().getRouter().navTo("Signup");
+            },
         });
     });

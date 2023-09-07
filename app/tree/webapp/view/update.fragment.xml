@@ -1,0 +1,64 @@
+<core:FragmentDefinition
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <Dialog
+        id="updateDialog"
+        title="UPDATE NODES"
+        titleAlignment="Center"
+        contentWidth="30%"
+    >
+        <content>
+            <form:SimpleForm layout="ResponsiveGridLayout">
+                <form:content>
+                    <Label
+                        text="PAGE_ID"
+                        design="Bold"
+                    />
+                    <Input
+                        type="Text"
+                        id="pageidUpdate"
+                        enabled="false"
+                        required="true"
+                    />
+                    <Label
+                        text="DESCRIPTION"
+                        design="Bold"
+                    />
+                    <Input
+                        id="descUpdate"
+                        required="true"
+                    />
+                    <Label
+                        text="PARENT_NODE_ID"
+                        required="true"
+                        design="Bold"
+                    />
+                    <Input
+                        type="Text"
+                        id="parentNodeIdUpdate"
+                        required="true"
+                        enabled="false"
+                    />
+                </form:content>
+            </form:SimpleForm>
+        </content>
+        <beginButton>
+            <Button
+                tooltip="update"
+                text="UPDATE"
+                type="Accept"
+                press="onUpdate"
+            />
+        </beginButton>
+        <endButton>
+            <Button
+                tooltip="Cancel"
+                text="CANCEL"
+                type="Reject"
+                press=".onCloseUpdate"
+            />
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

@@ -168,6 +168,7 @@
                             text="Sign up"
                             type="Transparent"
                             class="Sign_up"
+                            press="onPressSignUP"
                         />
                         <Button
                             text="Log in"

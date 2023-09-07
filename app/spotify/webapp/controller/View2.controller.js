@@ -20,11 +20,11 @@ sap.ui.define([
             },
 
             onSearch:function(){
+                document.title = "Spotify - Search";
                 that.byId("homeIcon").removeStyleClass("homeIcon");
                 that.byId("searchIcon").removeStyleClass("searchIcon");
                 that.byId("homeIcon").addStyleClass("homeIconAtSearch");
                 that.byId("searchIcon").addStyleClass("searchIconsAtSearch");
-
                 that.byId("text").removeStyleClass("text");
                 that.byId("text2").removeStyleClass("text2");
                 that.byId("text").addStyleClass("textAtSearch");
@@ -33,6 +33,10 @@ sap.ui.define([
 
             onPressLogIn:function(){
                 that.getOwnerComponent().getRouter().navTo("Login");
+            },
+
+            onPressSignUP:function(){
+                that.getOwnerComponent().getRouter().navTo("Signup");
             },
         });
     });
