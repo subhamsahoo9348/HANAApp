@@ -33,5 +33,6 @@ mta_archives/
 # auto generated wildcard
 db/.env
 data.json
+header.json
 package-lock.json
 project1/

@@ -131,8 +131,6 @@ module.exports = (srv) => {
     if (req.data.FLAG === "C") {
       try {
         const returnsData = [];
-        const invalidReturnsData1 = [];
-        const invalidReturnsData2 = [];
         const UNIQUE_ID_HEADER = await cds.run(SELECT.from("CP_UNIQUE_ID_HEADER"));
         var CP_SEED_ORDER = await cds.run(SELECT.from("CP_SEED_ORDER"));
         const CP_SEED_ORDER_ID = [];
@@ -183,16 +181,15 @@ module.exports = (srv) => {
     }
     if (req.data.FLAG === "drop") {
       try {
-        const fs = require('fs');
-        const data = require("../db/header.json");
         let count = 1;
+        const fs = require('fs'),
+          data = require("../db/header.json"),
+          dragObjectId = JSON.parse(req.data.OBJ).dragObject.PAGEID,
+          dropObjectId = JSON.parse(req.data.OBJ).dropObject.PAGEID,
+          dropObject = data.find(obj => obj.PAGEID === dropObjectId),
+          dragObjectIndex = data.findIndex(obj => obj.PAGEID === dragObjectId),
+          dropObjectIndex = data.findIndex(obj => obj.PAGEID === dropObjectId);
         data.forEach((obj, index) => { data[index].index = count++ });
-        const dragObjectId = JSON.parse(req.data.OBJ).dragObject.PAGEID;
-        const dropObjectId = JSON.parse(req.data.OBJ).dropObject.PAGEID;
-        const dragObject = data.find(obj => obj.PAGEID === dragObjectId);
-        const dropObject = data.find(obj => obj.PAGEID === dropObjectId);
-        const dragObjectIndex = data.findIndex(obj => obj.PAGEID === dragObjectId);
-        const dropObjectIndex = data.findIndex(obj => obj.PAGEID === dropObjectId);
         data[dragObjectIndex].index = dropObject.index;
         data[dragObjectIndex].PARENTNODEID = dropObject.PARENTNODEID;
         data[dropObjectIndex].index = Number(dropObject.index) + 1;
@@ -215,9 +212,9 @@ module.exports = (srv) => {
 
     if (req.data.FLAG === "C") {
       try {
-        const fs = require('fs');
-        const data = require("../db/header.json");
-        const OBJ = JSON.parse(req.data.OBJ);
+        const fs = require('fs'),
+          data = require("../db/header.json"),
+          OBJ = JSON.parse(req.data.OBJ);
         data.push(OBJ);
         fs.writeFileSync('./db/header.json', JSON.stringify(data));
       } catch (e) {
@@ -227,10 +224,10 @@ module.exports = (srv) => {
     }
     if (req.data.FLAG === "U") {
       try {
-        const fs = require('fs');
-        const data = require("../db/header.json");
-        const OBJ = JSON.parse(req.data.OBJ);
-        const index = data.findIndex(obj => obj.PAGEID === OBJ.PAGEID);
+        const fs = require('fs'),
+          data = require("../db/header.json"),
+          OBJ = JSON.parse(req.data.OBJ),
+          index = data.findIndex(obj => obj.PAGEID === OBJ.PAGEID);
         data[index] = OBJ;
         fs.writeFileSync('./db/header.json', JSON.stringify(data));
       } catch (e) {
@@ -240,12 +237,12 @@ module.exports = (srv) => {
     }
     if (req.data.FLAG === "D") {
       try {
-        const fs = require('fs');
-        const data = require("../db/header.json");
-        const deleteIds = JSON.parse(req.data.OBJ).deleteIds;
-        const updateData = data.filter(obj => !deleteIds.includes(obj.PAGEID))
-        updateData.forEach((obj,index)=>{
-          if(deleteIds.includes(obj.PARENTNODEID)){
+        const fs = require('fs'),
+          data = require("../db/header.json"),
+          deleteIds = JSON.parse(req.data.OBJ).deleteIds,
+          updateData = data.filter(obj => !deleteIds.includes(obj.PAGEID));
+        updateData.forEach((obj, index) => {
+          if (deleteIds.includes(obj.PARENTNODEID)) {
             updateData[index].PARENTNODEID = 0;
           }
         })
@@ -258,8 +255,8 @@ module.exports = (srv) => {
 
     if (req.data.FLAG === "readcontent") {
       try {
-        const fs = require('fs');
-        const data = require("../db/data.json");
+        const fs = require('fs'),
+          data = require("../db/data.json");
         return JSON.stringify(data);
       } catch (e) {
         console.log(e)

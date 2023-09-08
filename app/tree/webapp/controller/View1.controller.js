@@ -12,6 +12,9 @@ sap.ui.define([
             onInit: function () {
                 that = this;
 
+                this._oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+                this._oRouter.attachRouteMatched(this.onPageStart, this);
+
                 that.fetchTreeData();
                 if (!that.createDialog) {
                     that.createDialog = that.loadFragment({
@@ -24,6 +27,11 @@ sap.ui.define([
                     })
                 }
             },
+
+            onPageStart: function () {
+                //debugger
+            },
+
             fetchTreeData: function () {
                 const oModel = that.getOwnerComponent().getModel();
                 oModel.callFunction("/tree", {
@@ -33,16 +41,15 @@ sap.ui.define([
                         OBJ: null
                     },
                     success: function (res) {
-                        const data = JSON.parse(res.tree);
-
-                        const array = data.map(obj => {
-                            return {
-                                PAGEID: obj.PAGEID,
-                                PARENTNODEID: obj.PARENTNODEID,
-                                DESCRIPTION: obj.DESCRIPTION,
-                                nodes: []
-                            }
-                        })
+                        const data = JSON.parse(res.tree),
+                            array = data.map(obj => {
+                                return {
+                                    PAGEID: obj.PAGEID,
+                                    PARENTNODEID: obj.PARENTNODEID,
+                                    DESCRIPTION: obj.DESCRIPTION,
+                                    nodes: []
+                                }
+                            })
 
                         array.forEach((obj, index) => {
                             const myNodes = array.filter(item => item.PARENTNODEID === obj.PAGEID).map(o => {
@@ -76,20 +83,20 @@ sap.ui.define([
             },
 
             onDragStart: function (oEvent) {
-                var oTree = this.byId("tree");
-                var oBinding = oTree.getBinding("items");
-                var oDragSession = oEvent.getParameter("dragSession");
-                var oDraggedItem = oEvent.getParameter("target");
-                var iDraggedItemIndex = oTree.indexOfItem(oDraggedItem);
-                var aSelectedIndices = oTree.getBinding("items").getSelectedIndices();
-                var aSelectedItems = oTree.getSelectedItems();
-                var aDraggedItemContexts = [];
+                const oTree = that.byId("tree"),
+                    oBinding = oTree.getBinding("items"),
+                    oDragSession = oEvent.getParameter("dragSession"),
+                    oDraggedItem = oEvent.getParameter("target"),
+                    iDraggedItemIndex = oTree.indexOfItem(oDraggedItem),
+                    aSelectedIndices = oTree.getBinding("items").getSelectedIndices(),
+                    aSelectedItems = oTree.getSelectedItems(),
+                    aDraggedItemContexts = [];
 
                 if (aSelectedItems.length > 0) {
                     if (aSelectedIndices.indexOf(iDraggedItemIndex) === -1) {
                         oEvent.preventDefault();
                     } else {
-                        for (var i = 0; i < aSelectedItems.length; i++) {
+                        for (let i = 0; i < aSelectedItems.length; i++) {
                             aDraggedItemContexts.push(oBinding.getContextByIndex(aSelectedIndices[i]));
                         }
                     }
@@ -103,20 +110,20 @@ sap.ui.define([
             },
 
             onDrop: function (oEvent) {
-                var oTree = this.byId("tree");
-                var oBinding = oTree.getBinding("items");
-                var oDragSession = oEvent.getParameter("dragSession");
-                var oDroppedItem = oEvent.getParameter("droppedControl");
-                var aDraggedItemContexts = oDragSession.getComplexData("hierarchymaintenance").draggedItemContexts;
-                var iDroppedIndex = oTree.indexOfItem(oDroppedItem);
-                var oNewParentContext = oBinding.getContextByIndex(iDroppedIndex);
+                const oTree = that.byId("tree"),
+                    oBinding = oTree.getBinding("items"),
+                    oDragSession = oEvent.getParameter("dragSession"),
+                    oDroppedItem = oEvent.getParameter("droppedControl"),
+                    aDraggedItemContexts = oDragSession.getComplexData("hierarchymaintenance").draggedItemContexts,
+                    iDroppedIndex = oTree.indexOfItem(oDroppedItem),
+                    oNewParentContext = oBinding.getContextByIndex(iDroppedIndex);
 
                 if (aDraggedItemContexts.length === 0 || !oNewParentContext) {
                     return;
                 }
 
-                const dragObject = aDraggedItemContexts[0].getObject();
-                const dropObject = oDroppedItem.getBindingContext().getObject();
+                const dragObject = aDraggedItemContexts[0].getObject(),
+                    dropObject = oDroppedItem.getBindingContext().getObject();
 
                 const oModel = that.getOwnerComponent().getModel();
                 oModel.callFunction("/tree", {
@@ -190,16 +197,23 @@ sap.ui.define([
 
             onCloseCreate: function () {
                 that.byId("desc").setValue("");
+                that.byId("desc").setValueState(sap.ui.core.ValueState.None);
                 that.byId("createDialog").close();
+
             },
 
             onCloseUpdate: function () {
+                that.byId("descUpdate").setValueState(sap.ui.core.ValueState.None);
                 that.byId("desc").setValue("");
                 that.byId("updateDialog").close();
             },
 
             onAdd: function () {
-                if (!that.byId("desc").getValue()) return sap.m.MessageToast.show("DESCRIPTION REQUIRED");
+                if (!that.byId("desc").getValue()) {
+                    that.byId("desc").setValueState(sap.ui.core.ValueState.Error);
+                    return sap.m.MessageToast.show("DESCRIPTION REQUIRED");
+                }
+                that.byId("desc").setValueState(sap.ui.core.ValueState.Success);
                 const oModel = that.getOwnerComponent().getModel();
                 oModel.callFunction("/tree", {
                     method: "GET",
@@ -222,7 +236,12 @@ sap.ui.define([
             },
 
             onUpdate: function () {
-                if (!that.byId("descUpdate").getValue()) return sap.m.MessageToast.show("DESCRIPTION REQUIRED");
+                
+                if (!that.byId("descUpdate").getValue()) {
+                    that.byId("descUpdate").setValueState(sap.ui.core.ValueState.Error);
+                    return sap.m.MessageToast.show("DESCRIPTION REQUIRED");
+                }
+                that.byId("descUpdate").setValueState(sap.ui.core.ValueState.Success);
                 const oModel = that.getOwnerComponent().getModel();
                 oModel.callFunction("/tree", {
                     method: "GET",
@@ -255,7 +274,7 @@ sap.ui.define([
                     urlParameters: {
                         FLAG: "D",
                         OBJ: JSON.stringify({
-                            deleteIds:deleteIds
+                            deleteIds: deleteIds
                         })
                     },
                     success: function (res) {
@@ -267,7 +286,7 @@ sap.ui.define([
                 })
             },
 
-            onPress:function(oEvent){
+            onPress: function (oEvent) {
                 const object = oEvent.getParameter("listItem").getBindingContext().getObject();
                 const oModel = that.getOwnerComponent().getModel();
                 oModel.callFunction("/tree", {
@@ -277,13 +296,10 @@ sap.ui.define([
                         OBJ: null
                     },
                     success: function (res) {
-                        const data = JSON.parse(res.tree);
-                        const contentObject = data.find(obj=>obj.PAGEID === object.PAGEID);
-                        if(contentObject){
-                            that.byId("html").setModel(new sap.ui.model.json.JSONModel({
-                                content:contentObject.CONTENT
-                            }))
-                        }
+                        const data = JSON.parse(res.tree),
+                            contentObject = data.find(obj => obj.PAGEID === object.PAGEID);
+                        that.byId("html").setContent("");
+                        that.byId("html").setContent(contentObject ? contentObject.CONTENT : "<h1 style='margin-left:650px; color:red;' >NO CONTENT AVAILABLE</h1>");
                     },
                     error: function (error) {
                         console.log(error);
